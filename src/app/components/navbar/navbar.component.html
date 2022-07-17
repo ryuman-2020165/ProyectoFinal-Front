@@ -14,19 +14,17 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a style="color: white;" routerLink="/home" class="nav-link active" aria-current="page" href="#">Home</a>
+          <a *ngIf="!token" style="color: white;" routerLink="/home" class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a style="color: white;" routerLink="/register" class="nav-link" href="#">Register</a>
+          <a  *ngIf="!token" style="color: white;" routerLink="/register" class="nav-link" href="#">Register</a>
         </li>
         <li class="nav-item">
-          <a style="color: white;" routerLink="/login" class="nav-link" href="#">Login</a>
+          <a *ngIf="!token"  style="color: white;" routerLink="/login" class="nav-link" href="#">Login</a>
         </li>
-        <li class="nav-item">
-          <a style="color: white;" routerLink="/login" class="nav-link" href="#">Gestión de usuarios</a>
-        </li>
+      
         <li class="nav-item dropdown">
-          <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown link
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -35,6 +33,11 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
+        <div  class="collapse navbar-collapse" id="navbarNavDropdown">
+          <li class="nav-item">
+            <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/users" class="nav-link" href="#">Usuarios</a>
+          </li>
+        </div>
       </ul>
     </div>
   </div>
