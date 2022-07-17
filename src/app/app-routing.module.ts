@@ -4,14 +4,15 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
-import { UsersComponent } from './components/users/users.component';
+import { UsersComponent } from './components/admin/users/users.component';
+import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {path:'', component: HomeComponent},
   {path:'home', component: HomeComponent},
   {path:'register', component: RegisterComponent},
   {path:'login', component: LoginComponent},
-  {path: 'users', component:UsersComponent},
+  {path: 'admin/users',canActivate:[UserGuard], component:UsersComponent},
 
   {path:'**', component: NotFoundComponent},
 ];
