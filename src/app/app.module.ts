@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/admin/users/users.component';
+import { CategoryComponent } from './components/admin/category/category.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UsersComponent } from './components/admin/users/users.component';
     RegisterComponent,
     NotFoundComponent,
     HomeComponent,
-    UsersComponent
+    UsersComponent,
+    CategoryComponent
     
   ],
   imports: [

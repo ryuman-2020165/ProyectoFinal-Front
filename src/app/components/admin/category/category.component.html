@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+
+<h1 class="pt-3" style="text-align: center;">Categoria</h1>
+<div class="text-center m-3">
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#CategoryModal">Agregar categoria</button>
+</div>
+
+
+
+
+<div class="row">
+    <div *ngFor="let category of categories" class="card m-4" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{category.name}}</h5>
+          <p class="card-text">{{category.description}}</p>
+
+          <button class="btn btn-warning m-2 " (click)="getCategory(category._id)" data-bs-toggle="modal" data-bs-target="#updateCategoryModal" aria-controls="offcanvasExample">Update</button>
+          <button class="btn btn-danger" (click)="deleteCategory(category._id)">Delete</button>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+<!-- Add category modal -->
+<div class="modal fade" id="CategoryModal" tabindex="-1" aria-labelledby="categoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="categoryModalLabel">Agregar Categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <form #addCategoryForm="ngForm">
+                <div class="mb-3">
+                  <label for="NameInput" class="form-label">Nombre</label>
+                  <input [(ngModel)]="category.name" name="name" type="email" class="form-control" id="NameInput">
+                </div>
+                <div class="mb-3">
+                    <label for="DescriptionInput" class="form-label">Descripción</label>
+                    <input [(ngModel)]="category.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                  </div>
+
+              </form>
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button (click)="addCategory(addCategoryForm)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Update category modal -->
+<div class="modal fade" id="updateCategoryModal" tabindex="-1" aria-labelledby="updatecategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updatecategoryModalLabel">Editar Categoria</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <form (ngSubmit)="updateCategory()" *ngIf="categoryGetId">
+                <div class="mb-3">
+                  <label for="NameInput" class="form-label">Nombre</label>
+                  <input [(ngModel)]="categoryGetId.name" name="name" type="name" class="form-control" id="name">
+                </div>
+                <div class="mb-3">
+                    <label for="DescriptionInput" class="form-label">Descripción</label>
+                    <input [(ngModel)]="categoryGetId.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                  </div>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
