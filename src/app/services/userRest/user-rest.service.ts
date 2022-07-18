@@ -20,16 +20,15 @@ export class UserRestService {
 
   testHttp(){
     return this.http.get(environment.baseUrl + 'user/pruebaUser', {headers: this.httpOptions});
-                        //http://localhost:3200/user/pruebaUser
   }
 
   register(params: {}){
-    let body = JSON.stringify(params); //CONVERTIR A JSON
+    let body = JSON.stringify(params); 
     return this.http.post(environment.baseUrl + 'user/register', body, {headers: this.httpOptions});
   }
 
   login(params: {}){
-    let body = JSON.stringify(params); //CONVERTIR A JSON
+    let body = JSON.stringify(params); 
     return this.http.post(environment.baseUrl + 'user/login', body, {headers: this.httpOptions});
   }
 

@@ -3,3 +3,10 @@
     height: 100vh !important;
     }
     }
+
+    body{
+        width:100%;
+        background-image: url(https://www.guatemala.com/fotos/201608/Antigua-885x500.jpg);
+        padding: 5%
+        
+    }
