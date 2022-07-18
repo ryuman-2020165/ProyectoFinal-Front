@@ -28,7 +28,6 @@ export class UsersComponent implements OnInit {
     this.usersRest.getUsers().subscribe({
       next:(res:any)=>{
         this.users = res.findUsers;
-        console.log(this.users);
       },
       error: (err)=>  console.log(err.error.message)
     })
@@ -38,8 +37,11 @@ export class UsersComponent implements OnInit {
     this.usersRest.getUser(id).subscribe({
       next: (res:any)=>{
         
-        this.userGetId = res.findUser;
+  
         
+        this.userGetId = res.findUser;
+        delete this.userGetId.password
+
       },
       error: (err)=>{
         console.log(err.error.message);
@@ -63,12 +65,13 @@ saveUser(addUserForm: any){
 updateUser(){
   this.usersRest.updateUser(this.userGetId,this.userGetId._id).subscribe({
     next: (res:any)=>{
-      console.log(this.userGetId)
+      alert(res.message)
       
       this.getUsers()
     },
     error: (err)=>{
       alert(err.error.message || err.error)
+      
 
     }
   })
