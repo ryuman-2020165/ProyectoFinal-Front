@@ -1,7 +1,14 @@
-<body>
-    
-
 <app-navbar></app-navbar>
+
+<body>
+  
+
+
+<h1 class="pt-3" style="text-align: center;">Gestión de usuarios</h1>
+<div class="text-center m-3">
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#UserModal">Agregar usuario</button>
+</div>
+
 
 <div class="row">
     <div *ngFor="let UsersAdmin of users"  class="card m-4" style="width: 15rem;">
@@ -9,11 +16,104 @@
           <h5 style="text-align: center ;" class="card-title">{{UsersAdmin.name}}</h5>
           <p style="text-align: center ;" class="card-text">{{UsersAdmin.username}}</p>
           <p style="text-align: center ;" class="card-text">{{UsersAdmin.role}}</p>
+          
 
-          <button class="btn btn-warning m-2 "  data-bs-toggle="modal" data-bs-target="#updateCategoryModal" aria-controls="offcanvasExample">Update</button>
-          <button class="btn btn-danger" >Delete</button>
+          <button class="btn btn-warning m-2 " (click)="getUser(UsersAdmin._id)" data-bs-toggle="modal" data-bs-target="#updateUserModal" aria-controls="offcanvasExample">Update</button>
+          <button class="btn btn-danger" (click)="deleteUser(UsersAdmin._id)">Delete</button>
         </div>
       </div>
 </div>
+
+<!--Add user modal for admin-->
+
+<div class="modal fade" id="UserModal" tabindex="-1" aria-labelledby="UserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="UserModalLabel">Agregar Usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <form #addUserForm="ngForm">
+                <div class="mb-3">
+                  <label for="NameInput" class="form-label">Nombre</label>
+                  <input [(ngModel)]="user.name"  name="name" type="email" class="form-control" id="NameInput">
+                </div>
+                <div class="mb-3">
+                    <label for="UsernameInput" class="form-label">Username</label>
+                    <input [(ngModel)]="user.username" name="username" type="email" class="form-control" id="UsernameInput">
+                  </div>
+                  <div class="mb-3">
+                    <label for="RoleInput" class="form-label">Role</label>
+                    <input [(ngModel)]="user.role" name="role" type="email" class="form-control" id="RoleInput">
+                  </div>
+                  <div class="mb-3">
+                    <label for="PhoneInput" class="form-label">Phone</label>
+                    <input [(ngModel)]="user.phone" name="phone" type="email" class="form-control" id="PhoneInput">
+                  </div>
+                  <div class="mb-3">
+                    <label for="PasswordInput" class="form-label">Password</label>
+                    <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="PasswordInput">
+                  </div>
+                  <div class="mb-3">
+                    <label for="EmanilInput" class="form-label">Email</label>
+                    <input [(ngModel)]="user.email" name="password" type="email" class="form-control" id="EmanilInput">
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button (click)="saveUser(addUserForm)"  type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Update Modal user for admin-->
+  <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateuserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="updateUserModalLabel">Actualizar usuario</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <form (ngSubmit)="updateUser()" *ngIf="userGetId">
+              <div class="mb-3">
+                <label for="NameInput" class="form-label">Nombre</label>
+                <input [(ngModel)]="userGetId.name"  name="name" type="email" class="form-control" id="NameInput">
+              </div>
+              <div class="mb-3">
+                  <label for="UsernameInput" class="form-label">Username</label>
+                  <input [(ngModel)]="userGetId.username" name="username" type="email" class="form-control" id="UsernameInput">
+                </div>
+                <div class="mb-3">
+                  <label for="RoleInput" class="form-label">Role</label>
+                  <input [(ngModel)]="userGetId.role" name="role" type="email" class="form-control" id="RoleInput">
+                </div>
+                <div class="mb-3">
+                  <label for="PhoneInput" class="form-label">Phone</label>
+                  <input [(ngModel)]="userGetId.phone" name="phone" type="email" class="form-control" id="PhoneInput">
+                </div>
+               
+                <div class="mb-3">
+                  <label for="EmanilInput" class="form-label">Email</label>
+                  <input [(ngModel)]="userGetId.email" name="password" type="email" class="form-control" id="EmanilInput">
+                </div>
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              </form>
+
+
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
 
 </body>

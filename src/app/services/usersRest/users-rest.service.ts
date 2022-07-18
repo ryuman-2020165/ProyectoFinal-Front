@@ -21,4 +21,22 @@ export class UsersRestService {
   getUsers(){
     return this.http.get(environment.baseUrl+'user/getUsers',{headers: this.httpOptions})
   }
+
+  getUser(id:string){
+    return this.http.get(environment.baseUrl+'user/getUser/'+id,{headers: this.httpOptions})
+  }
+
+  deleteUser(id:string){
+    return this.http.delete(environment.baseUrl+'user/deleteUser/'+id,{headers: this.httpOptions})
+  } 
+
+  saveUser(params:{}){
+    return this.http.post(environment.baseUrl+'user/saveUser',params,{headers: this.httpOptions})
+  } 
+
+  updateUser(params:{}, id:string){
+    return this.http.put(environment.baseUrl+'user/updateUser/'+id,params,{headers: this.httpOptions})
+  }
+
+
 }
