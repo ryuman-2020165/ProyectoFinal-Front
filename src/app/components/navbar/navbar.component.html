@@ -35,12 +35,11 @@
 
         <li class="nav-item dropdown">
           <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+           Opciones
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="" (click)="logOut()">Cerrar Sesión</a></li>
+           
           </ul>
         </li>
         <div  class="collapse navbar-collapse" id="navbarNavDropdown">

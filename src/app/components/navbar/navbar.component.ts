@@ -22,4 +22,7 @@ export class NavbarComponent implements OnInit {
     this.name = this.userRest.getIdentity().name;
     this.surname = this.userRest.getIdentity().surname;
   }
+  logOut() {
+    localStorage.clear();
+  }
 }
