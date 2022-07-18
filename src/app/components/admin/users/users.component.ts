@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
  user:any;
  userId:any;
  userGetId:any;
+ search:string = ''
 
   constructor(
    private usersRest: UsersRestService

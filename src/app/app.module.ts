@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { CategoryComponent } from './components/admin/category/category.component';
 import { DepartmentComponent } from './components/admin/department/department.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { DepartmentComponent } from './components/admin/department/department.co
     HomeComponent,
     UsersComponent,
     CategoryComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    SearchPipe
     
   ],
   imports: [

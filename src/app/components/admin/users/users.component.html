@@ -5,13 +5,17 @@
 
 
 <h1 class="pt-3" style="text-align: center;">Gestión de usuarios</h1>
+<div class="input-group m-4">
+  <input [(ngModel)]="search" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <button style="background-color: #9EA5A4;" class="btn btn-outline-secondary me-5" type="button" id="button-addon2">Button</button>
+</div>
 <div class="text-center m-3">
 <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#UserModal">Agregar usuario</button>
 </div>
 
 
 <div class="row">
-    <div *ngFor="let UsersAdmin of users"  class="card m-4" style="width: 15rem;">
+    <div *ngFor="let UsersAdmin of users | search:search"  class="card m-4" style="width: 15rem;">
         <div class="card-body">
           <h5 style="text-align: center ;" class="card-title">{{UsersAdmin.name}}</h5>
           <p style="text-align: center ;" class="card-text">{{UsersAdmin.username}}</p>
