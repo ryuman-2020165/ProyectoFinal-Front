@@ -6,6 +6,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { CategoryComponent } from './components/admin/category/category.component';
+import { DepartmentComponent } from './components/admin/department/department.component';
 import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   {path: 'admin/users',canActivate:[UserGuard], component:UsersComponent},
   {path: 'admin/category',canActivate:[UserGuard], component: CategoryComponent},
+  {path: 'admin/department', canActivate:[UserGuard], component: DepartmentComponent},
+  
 
   {path:'**', component: NotFoundComponent},
 ];

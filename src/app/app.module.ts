@@ -12,6 +12,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HomeComponent } from './components/home/home.component';
 import { UsersComponent } from './components/admin/users/users.component';
 import { CategoryComponent } from './components/admin/category/category.component';
+import { DepartmentComponent } from './components/admin/department/department.component';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { CategoryComponent } from './components/admin/category/category.componen
     NotFoundComponent,
     HomeComponent,
     UsersComponent,
-    CategoryComponent
+    CategoryComponent,
+    DepartmentComponent
     
   ],
   imports: [

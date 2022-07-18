@@ -1,0 +1,87 @@
+<body>
+
+    <app-navbar></app-navbar>
+    
+    <h1 class="pt-3" style="text-align: center;">Departamento</h1>
+    <div class="text-center m-3">
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#DepartmentModal">Agregar Departamento</button>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let department of departments" class="card m-4" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{department.name}}</h5>
+              <p class="card-text">{{department.description}}</p>
+    
+              <button class="btn btn-warning m-2 " (click)="getDepartment(department._id)" data-bs-toggle="modal" data-bs-target="#updateDepartmentModal" aria-controls="offcanvasExample">Update</button>
+              <button class="btn btn-danger" (click)="deleteDepartment(department._id)">Delete</button>
+            </div>
+          </div>
+    </div>
+
+     <!-- Add category modal -->
+     <div class="modal fade" id="DepartmentModal" tabindex="-1" aria-labelledby="DepartmentModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="DepartmentModalLabel">Agregar Departamento</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+    
+            <div class="modal-body">
+    
+                <form #saveDepartmentForm="ngForm">
+                    <div class="mb-3">
+                      <label for="NameInput" class="form-label">Nombre</label>
+                      <input [(ngModel)]="department.name" name="name" type="email" class="form-control" id="NameInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="DescriptionInput" class="form-label">Descripción</label>
+                        <input [(ngModel)]="department.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                      </div>
+    
+                  </form>
+    
+            </div>
+    
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button (click)="saveDepartment(saveDepartmentForm)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  <!-- Update category modal -->
+  <div class="modal fade" id="updateDepartmentModal" tabindex="-1" aria-labelledby="updatedepartmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updatedepartmentModalLabel">Editar Categoria</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+  
+          <div class="modal-body">
+  
+              <form (ngSubmit)="updateDepartment()" *ngIf="departmentGetId">
+                  <div class="mb-3">
+                    <label for="NameInput" class="form-label">Nombre</label>
+                    <input [(ngModel)]="departmentGetId.name" name="name" type="name" class="form-control" id="name">
+                  </div>
+                  <div class="mb-3">
+                      <label for="DescriptionInput" class="form-label">Descripción</label>
+                      <input [(ngModel)]="departmentGetId.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                </form>
+  
+  
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+</body>
+    
