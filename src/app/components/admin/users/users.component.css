@@ -1,7 +1,7 @@
 body{
     width:100%;
     background-image: url(https://i.ibb.co/WW8bnDw/Guatemala-island-mountains-sea-dock-1920x1200-1.jpg);
-    
+    overflow: hidden
 }
 
 .pt-3{

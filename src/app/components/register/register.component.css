@@ -5,8 +5,12 @@
     }
 
     body{
-        width:100%;
-        background-image: url(https://www.guatemala.com/fotos/201608/Antigua-885x500.jpg);
-        padding: 5%
         
+        background-image: url(https://fondosmil.com/fondo/27678.jpg);
+        background-size: 150%;
+        background-position: center;
+        padding: 5%;
+
+        
+
     }
