@@ -23,6 +23,7 @@
           <span class="badge bg-danger">{{i+1}}</span>
           <h3 class="card-title">{{category.name}}</h3>
           <p class="card-text">{{category.description}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">{{category._id}}</h6>
           <button class="btn btn-warning m-2 " (click)="getCategory(category._id)" data-bs-toggle="modal" data-bs-target="#updateCategoryModal" aria-controls="offcanvasExample" aria-controls="offcanvasExample">Update</button>
           <button class="btn btn-danger" (click)="deleteCategory(category._id)">Delete</button>
         </div>

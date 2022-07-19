@@ -18,6 +18,7 @@
               <span class="badge bg-danger">{{i+1}}</span>
               <h3 class="card-title">{{department.name}}</h3>
               <p class="card-text">{{department.description}}</p>
+              <h6 class="card-subtitle mb-2 text-muted">{{department._id}}</h6>
               <button class="btn btn-warning m-2 " (click)="getDepartment(department._id)" data-bs-toggle="modal" data-bs-target="#updateDepartmentModal" aria-controls="offcanvasExample">Update</button>
               <button class="btn btn-danger" (click)="deleteDepartment(department._id)">Delete</button>
             </div>

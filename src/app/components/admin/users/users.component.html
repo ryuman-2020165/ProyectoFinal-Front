@@ -24,8 +24,9 @@
         <div class="card-body">
           <span class="badge bg-danger">{{i+1}}</span>
           <h3 class="card-title">{{UsersAdmin.name}}</h3>
-          <h6 class="card-subtitle mb-2 text-muted">{{UsersAdmin.username}}</h6>
-          <p class="card-text">{{UsersAdmin.role}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">Username: {{UsersAdmin.username}}</h6>
+          <p class="card-text">Rol: {{UsersAdmin.role}}</p>
+          <h6 class="card-subtitle mb-2 text-muted">{{UsersAdmin._id}}</h6>
           <button class="btn btn-warning m-2 " (click)="getUser(UsersAdmin._id)" data-bs-toggle="modal" data-bs-target="#updateUserModal" aria-controls="offcanvasExample">Update</button>
           <button class="btn btn-danger" (click)="deleteUser(UsersAdmin._id)">Delete</button>
         </div>
