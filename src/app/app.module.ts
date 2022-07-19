@@ -16,7 +16,9 @@ import { DepartmentComponent } from './components/admin/department/department.co
 import { SearchPipe } from './pipes/search.pipe';
 import { UserComponent } from './components/Client/user/user.component';
 import { TripComponent } from './components/admin/trip/trip.component';
-import { MyProfileComponent } from './components/client/my-profile/my-profile.component';
+import { MyProfileComponent } from './components/Client/my-profile/my-profile.component';
+import { ClientCategoryComponent } from './components/Client/client-category/client-category.component';
+import { ClientDepartmentComponent } from './components/Client/client-department/client-department.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { MyProfileComponent } from './components/client/my-profile/my-profile.co
     SearchPipe,
     UserComponent,
     TripComponent,
-    MyProfileComponent
+    MyProfileComponent,
+    ClientCategoryComponent,
+    ClientDepartmentComponent
     
   ],
   imports: [

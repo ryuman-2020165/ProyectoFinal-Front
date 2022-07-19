@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<body>
+<body background="../../../../assets/img/banner.jpg">
   
 <div>
 
@@ -14,19 +14,29 @@
 </div>
 
 
-<div class="row">
-    <div *ngFor="let UsersAdmin of users | search:search"  class="card m-4" style="width: 15rem;">
-        <div class="card-body">
-          <h5 style="text-align: center ;" class="card-title">{{UsersAdmin.name}}</h5>
-          <p style="text-align: center ;" class="card-text">{{UsersAdmin.username}}</p>
-          <p style="text-align: center ;" class="card-text">{{UsersAdmin.role}}</p>
-          
 
+<div class="container  mt-5 mb-5">
+  <h2></h2>
+  <div class="row m-0">
+
+    <div *ngFor="let UsersAdmin of users | search:search;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <span class="badge bg-danger">{{i+1}}</span>
+          <h3 class="card-title">{{UsersAdmin.name}}</h3>
+          <h6 class="card-subtitle mb-2 text-muted">{{UsersAdmin.username}}</h6>
+          <p class="card-text">{{UsersAdmin.role}}</p>
           <button class="btn btn-warning m-2 " (click)="getUser(UsersAdmin._id)" data-bs-toggle="modal" data-bs-target="#updateUserModal" aria-controls="offcanvasExample">Update</button>
           <button class="btn btn-danger" (click)="deleteUser(UsersAdmin._id)">Delete</button>
         </div>
       </div>
+
+  </div>
 </div>
+</div>
+
+
+
 
 <!--Add user modal for admin-->
 

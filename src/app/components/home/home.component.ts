@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
+import { UserRestService } from 'src/app/services/userRest/user-rest.service';
+
 
 
 @Component({
@@ -7,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  token:any
+  
 
-  constructor() { }
+  constructor(
+    private userRest: UserRestService
+  ) { 
+
+  }
 
   ngOnInit(): void {
+    this.token = this.userRest.getToken();
+    
   }
+  
+  
+    
 
 }

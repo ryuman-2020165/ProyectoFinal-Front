@@ -9,15 +9,19 @@ import { CategoryComponent } from './components/admin/category/category.componen
 import { DepartmentComponent } from './components/admin/department/department.component';
 import { TripComponent } from './components/admin/trip/trip.component';
 import { UserGuard } from './guards/user.guard';
-import { MyProfileComponent } from './components/client/my-profile/my-profile.component';
+import { MyProfileComponent } from './components/Client/my-profile/my-profile.component';
+import { ClientCategoryComponent } from './components/Client/client-category/client-category.component';
+import { ClientDepartmentComponent } from './components/Client/client-department/client-department.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin/users', canActivate: [UserGuard], component: UsersComponent },
   {path: 'myProfile',component:MyProfileComponent},
+  {path: 'category',component:ClientCategoryComponent},
+  {path: 'department',component:ClientDepartmentComponent},
+  { path: 'admin/users', canActivate: [UserGuard], component: UsersComponent },
   { path: 'admin/category', canActivate: [UserGuard], component: CategoryComponent },
   { path: 'admin/department', canActivate: [UserGuard], component: DepartmentComponent },
   { path: 'admin/trip', canActivate: [UserGuard], component: TripComponent },

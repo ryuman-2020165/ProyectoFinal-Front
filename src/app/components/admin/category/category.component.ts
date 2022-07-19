@@ -51,7 +51,7 @@ export class CategoryComponent implements OnInit {
   updateCategory(){
     this.categoryRest.updateCategory(this.categoryGetId,this.categoryGetId._id).subscribe({
       next: (res:any)=>{
-        console.log(res);
+        
         
         this.getCategories()
       },

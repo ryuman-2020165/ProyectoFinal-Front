@@ -1,23 +1,37 @@
-<body>
-
-    <app-navbar></app-navbar>
+<app-navbar></app-navbar>
     
+    <body background="../../../../assets/img/banner.jpg">
     <h1 class="pt-3" style="text-align: center;">Departamento</h1>
     <div class="text-center m-3">
     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#DepartmentModal">Agregar Departamento</button>
     </div>
 
-    <div class="row">
-        <div *ngFor="let department of departments" class="card m-4" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">{{department.name}}</h5>
-              <p class="card-text">{{department.description}}</p>
+
+
+    <div class="container  mt-5 mb-5">
+      <h2></h2>
+      <div class="row m-0">
     
+        <div *ngFor="let department of departments;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <span class="badge bg-danger">{{i+1}}</span>
+              <h3 class="card-title">{{department.name}}</h3>
+              <p class="card-text">{{department.description}}</p>
               <button class="btn btn-warning m-2 " (click)="getDepartment(department._id)" data-bs-toggle="modal" data-bs-target="#updateDepartmentModal" aria-controls="offcanvasExample">Update</button>
               <button class="btn btn-danger" (click)="deleteDepartment(department._id)">Delete</button>
             </div>
           </div>
+    
+      </div>
     </div>
+    </div>
+    
+
+
+
+
+
 
      <!-- Add category modal -->
      <div class="modal fade" id="DepartmentModal" tabindex="-1" aria-labelledby="DepartmentModalLabel" aria-hidden="true">

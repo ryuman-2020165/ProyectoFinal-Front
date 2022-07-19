@@ -24,7 +24,7 @@ export class TripComponent implements OnInit {
   getTrips() {
     this.tripRest.getTrips().subscribe({
       next: (res: any) => {
-        console.log(res);
+        
         this.trips = res.findTrips;
       },
       error: (err) => {
@@ -49,7 +49,7 @@ export class TripComponent implements OnInit {
   updateTrip() {
     this.tripRest.updateTrip(this.tripGetId, this.tripGetId._id).subscribe({
       next: (res: any) => {
-        console.log(this.tripGetId);
+        
 
         this.getTrips()
       },
@@ -64,7 +64,7 @@ export class TripComponent implements OnInit {
     this.tripRest.getTrip(id).subscribe({
       next: (res: any) => {
 
-        console.log(res);
+        
         this.tripGetId = res.findTrip;
 
       },

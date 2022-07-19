@@ -24,7 +24,7 @@ export class DepartmentComponent implements OnInit {
   getDepartments(){
     this.departmentRest.getDepartments().subscribe({
       next: (res:any)=>{
-        console.log(res);
+        
         this.departments = res.findDepartment;
       },
       error: (err)=>{
@@ -64,7 +64,7 @@ export class DepartmentComponent implements OnInit {
     this.departmentRest.getDepartment(id).subscribe({
       next: (res:any)=>{
         
-        console.log(res);
+        
         this.departmentGetId = res.findDepartment;
         
       },

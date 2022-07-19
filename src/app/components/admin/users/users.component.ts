@@ -12,7 +12,7 @@ export class UsersComponent implements OnInit {
  user:any;
  userId:any;
  userGetId:any;
- search:string = ''
+ search:any
 
   constructor(
    private usersRest: UsersRestService
