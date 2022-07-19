@@ -9,6 +9,7 @@ import { CategoryComponent } from './components/admin/category/category.componen
 import { DepartmentComponent } from './components/admin/department/department.component';
 import { TripComponent } from './components/admin/trip/trip.component';
 import { UserGuard } from './guards/user.guard';
+import { MyProfileComponent } from './components/client/my-profile/my-profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'admin/users', canActivate: [UserGuard], component: UsersComponent },
+  {path: 'myProfile',component:MyProfileComponent},
   { path: 'admin/category', canActivate: [UserGuard], component: CategoryComponent },
   { path: 'admin/department', canActivate: [UserGuard], component: DepartmentComponent },
   { path: 'admin/trip', canActivate: [UserGuard], component: TripComponent },

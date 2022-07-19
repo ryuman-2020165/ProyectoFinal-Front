@@ -16,6 +16,7 @@ import { DepartmentComponent } from './components/admin/department/department.co
 import { SearchPipe } from './pipes/search.pipe';
 import { UserComponent } from './components/Client/user/user.component';
 import { TripComponent } from './components/admin/trip/trip.component';
+import { MyProfileComponent } from './components/client/my-profile/my-profile.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { TripComponent } from './components/admin/trip/trip.component';
     DepartmentComponent,
     SearchPipe,
     UserComponent,
-    TripComponent
+    TripComponent,
+    MyProfileComponent
     
   ],
   imports: [
