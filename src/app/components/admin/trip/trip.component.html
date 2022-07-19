@@ -1,1 +1,101 @@
-<p>trip works!</p>
+<body>
+
+    <app-navbar></app-navbar>
+
+    <h1 class="pt-3" style="text-align: center;">Viajes</h1>
+    <div class="text-center m-3">
+        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#TripModal">Agregar
+            Viajes</button>
+    </div>
+
+    <div class="row">
+        <div *ngFor="let trip of trips" class="card m-4" style="width: 27rem;">
+            <div class="card-header">
+                <h5 class="card-title">{{trip.user._id}}</h5>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{trip.user.name}}</h5>
+                <h5 class="card-title">{{trip.name}}</h5>
+                <h5 class="card-text">{{trip.endDate}}</h5>
+
+                <button class="btn btn-warning m-2 " (click)="getTrip(trip._id)" data-bs-toggle="modal"
+                    data-bs-target="#updateTripModal" aria-controls="offcanvasExample">Update</button>
+                <button class="btn btn-danger" (click)="deleteTrip(trip._id)">Delete</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add category modal -->
+    <div class="modal fade" id="TripModal" tabindex="-1" aria-labelledby="TripModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TripModalLabel">Agregar Viaje</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form #addTripForm="ngForm">
+                        <div class="mb-3">
+                            <label for="UserInput" class="form-label">Usuario</label>
+                            <input [(ngModel)]="trip.user" name="user" type="text" class="form-control" id="UserInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="NameInput" class="form-label">Nombre</label>
+                            <input [(ngModel)]="trip.name" name="name" type="email" class="form-control" id="NameInput">
+                        </div>
+                        <div class="mb-3">
+                            <label for="EndDateInput" class="form-label">Fecha Que Finaliza</label>
+                            <input [(ngModel)]="trip.endDate" name="endDate" type="date" class="form-control"
+                                id="EndDateInput">
+                        </div>
+
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button (click)="addTrip(addTripForm)" type="button" class="btn btn-primary"
+                        data-bs-dismiss="modal">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update category modal -->
+    <div class="modal fade" id="updateTripModal" tabindex="-1" aria-labelledby="updatetripModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updatetripModalLabel">Editar Categoria</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form (ngSubmit)="updateTrip()" *ngIf="tripGetId">
+                        <div class="mb-3">
+                            <label for="UserInput" class="form-label">Usuario</label>
+                            <input [(ngModel)]="tripGetId.user" name="user" type="text" class="form-control" id="user">
+                        </div>
+                        <div class="mb-3">
+                            <label for="NameInput" class="form-label">Nombre</label>
+                            <input [(ngModel)]="tripGetId.name" name="name" type="name" class="form-control" id="name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="EndDateInput" class="form-label">Fecha que Finaliza</label>
+                            <input [(ngModel)]="tripGetId.endDate" name="endDate" type="date" class="form-control"
+                                id="EndDateInput">
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

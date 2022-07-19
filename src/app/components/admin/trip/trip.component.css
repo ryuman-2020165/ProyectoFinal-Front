@@ -1,0 +1,10 @@
+body {
+    height: 100vh;
+    width: 100%;
+    background-image: url(https://blogapi.uber.com/wp-content/uploads/2018/10/Lugares-para-visitar-en-la-Ciudad-de-Guatemala-que-har%C3%A1n-que-te-enamores-de-ella.jpg);
+    overflow: hidden
+}
+
+.pt-3 {
+    color: white;
+}

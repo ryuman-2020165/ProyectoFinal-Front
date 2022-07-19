@@ -1,14 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar bg-dark bg-light">
   <div class="container-fluid">
     <a class="navbar-brand mt-2 mt-lg-0" routerLink="/home">
-      <img
-        src="../../../assets/img/Logo2 sin fondo.png"
-        height="30"
-        alt="MDB Logo"
-        loading="lazy"
-      />
+      <img src="../../../assets/img/Logo2 sin fondo.png" height="30" alt="MDB Logo" loading="lazy" />
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -18,39 +14,46 @@
           <a style="color: white;" routerLink="/home" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a  *ngIf="!token" style="color: white;" routerLink="/register" class="nav-link" href="#">Register</a>
+          <a *ngIf="!token" style="color: white;" routerLink="/register" class="nav-link" href="#">Register</a>
         </li>
         <li class="nav-item">
-          <a *ngIf="!token"  style="color: white;" routerLink="/login" class="nav-link" href="#">Login</a>
-        </li>
-      
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/users" class="nav-link">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/category" class="nav-link">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/department" class="nav-link">Departamento</a>
+          <a *ngIf="!token" style="color: white;" routerLink="/login" class="nav-link" href="#">Login</a>
         </li>
 
 
-    
-        <li class="nav-item dropdown " >
-          <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-           Opciones
+        <li class="nav-item">
+          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/users"
+            class="nav-link">Usuarios</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/category"
+            class="nav-link">Categoria</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/department"
+            class="nav-link">Departamento</a>
+        </li>
+        <li class="nav-item">
+          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/trip" class="nav-link">Viaje</a>
+        </li>
+
+
+        <li class="nav-item dropdown ">
+          <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Opciones
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="" (click)="logOut()">Cerrar Sesión</a></li>
-           
+
           </ul>
         </li>
-        
-        <div  class="collapse navbar-collapse" id="navbarNavDropdown">
-          
-          
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+
         </div>
-        
+
       </ul>
     </div>
   </div>
