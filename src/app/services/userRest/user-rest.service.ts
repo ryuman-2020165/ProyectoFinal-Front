@@ -55,29 +55,22 @@ export class UserRestService {
   }
 
   myProfile() {
-    return this.http.get(environment.baseUrl + 'user/myProfile', {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: this.getToken(),
+    return this.http.get(environment.baseUrl + 'user/myProfile', {headers: {'Content-Type': 'application/json',Authorization: this.getToken(),
       },
     });
   }
 
   updateProfile(params: {}) {
-    return this.http.put(environment.baseUrl + 'user/update', params, {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: this.getToken(),
+    return this.http.put(environment.baseUrl + 'user/update', params, {headers: {'Content-Type': 'application/json',Authorization: this.getToken(),
       },
     });
   }
 
-  deleteProfile() {
-    return this.http.delete(environment.baseUrl + 'user/delete', {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: this.getToken(),
+ 
+
+  deleteProfile(id:string){
+    return this.http.delete(environment.baseUrl+'user/delete/'+id,{headers: {'Content-Type': 'application/json',Authorization: this.getToken(),
       },
-    });
+    })
   }
 }

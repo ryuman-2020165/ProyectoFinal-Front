@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-profile',
@@ -7,7 +8,7 @@ import { UserRestService } from 'src/app/services/userRest/user-rest.service';
   styleUrls: ['./my-profile.component.css']
 })
 export class MyProfileComponent implements OnInit {
-  constructor(private userRest: UserRestService) {}
+  constructor(private userRest: UserRestService,private router: Router) {}
 
   userGetId: any;
   name: any;
@@ -15,6 +16,7 @@ export class MyProfileComponent implements OnInit {
   username:any;
   email: any;
   phone: any;
+  userId:any
 
 
 
@@ -31,12 +33,50 @@ export class MyProfileComponent implements OnInit {
         this.username = res.user.username
         this.email = res.user.email
         this.phone = res.user.phone
+        this.userId = res.user._id
+        this.userGetId = res.user
         
         
       },
       error: (err)=>{
         console.log(err.error.message);
       }
+    });
+  }
+
+
+
+
+  deleteProfile(){
+    this.userRest.deleteProfile(this.userId).subscribe({
+      next: (res:any)=>{
+        alert(res.message)
+        localStorage.clear();
+        this.router.navigateByUrl('/home');
+
+        
+      },
+      error: (err)=>{
+        alert(err.error.message || err.error)
+  
+      }
+    });
+    
+  }
+
+
+  updateProfile() {
+    this.userGetId.password = undefined;
+    this.userGetId.role = undefined;
+    this.userRest.updateProfile(this.userGetId).subscribe({
+      next: (res: any) => {
+        alert(res.message);
+        this.myProfile();
+        console.log(res)
+      },
+      error: (err) => {
+        console.log(err.error.message);
+      },
     });
   }
 
