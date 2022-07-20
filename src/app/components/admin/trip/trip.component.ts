@@ -65,7 +65,7 @@ export class TripComponent implements OnInit {
       next: (res: any) => {
 
         
-        this.tripGetId = res.findTrip;
+        this.tripGetId = res.trip;
 
       },
       error: (err) => {

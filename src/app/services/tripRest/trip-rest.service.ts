@@ -40,4 +40,8 @@ export class TripRestService {
   deleteTrip(id: string) {
     return this.http.delete(environment.baseUrl + 'trip/deleteTrip/' + id, { headers: this.httpOptions })
   }
+
+  getTripsClient(){
+    return this.http.get(environment.baseUrl+'trip/getTripsClient',{headers: this.httpOptions})
+  }
 }

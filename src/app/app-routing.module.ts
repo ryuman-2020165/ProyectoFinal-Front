@@ -12,6 +12,7 @@ import { UserGuard } from './guards/user.guard';
 import { MyProfileComponent } from './components/Client/my-profile/my-profile.component';
 import { ClientCategoryComponent } from './components/Client/client-category/client-category.component';
 import { ClientDepartmentComponent } from './components/Client/client-department/client-department.component';
+import { ClientTripComponent } from './components/Client/client-trip/client-trip.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'myProfile',component:MyProfileComponent},
   {path: 'category',component:ClientCategoryComponent},
   {path: 'department',component:ClientDepartmentComponent},
+  {path: 'trip', component:ClientTripComponent},
   { path: 'admin/users', canActivate: [UserGuard], component: UsersComponent },
   { path: 'admin/category', canActivate: [UserGuard], component: CategoryComponent },
   { path: 'admin/department', canActivate: [UserGuard], component: DepartmentComponent },
