@@ -11,7 +11,7 @@ export class CategoryComponent implements OnInit {
   categories: any
   category: CategoryModel
   categoryGetId: any
-  searchCategories: string = '';
+  searchCategories: any;
 
   constructor(
     private categoryRest: CategoryRestService

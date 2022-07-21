@@ -15,7 +15,7 @@ import { DepartmentRestService } from 'src/app/services/departmentRest/departmen
     lodges: any
     lodge: LodgeModel
     lodgeGetId: any
-    searchLodge:string = '';
+    searchLodge:any;
     constructor(
       private lodgeRest: LodgeRestService,
       private categoryRest: CategoryRestService,

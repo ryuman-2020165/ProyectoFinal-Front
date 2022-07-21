@@ -11,7 +11,7 @@ export class DepartmentComponent implements OnInit {
   departments: any
   department: DepartmentModel
   departmentGetId: any
-  searchDepartmets:string = '';
+  searchDepartmets:any;
   constructor(
     private departmentRest: DepartmentRestService
   ) { 
