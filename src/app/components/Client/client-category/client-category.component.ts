@@ -8,6 +8,7 @@ import { CategoryRestService } from 'src/app/services/categoryRest/category-rest
 })
 export class ClientCategoryComponent implements OnInit {
   categories: any
+  searchCategories: string='';
 
   constructor(
     private categoryRest: CategoryRestService

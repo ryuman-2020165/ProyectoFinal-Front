@@ -8,6 +8,7 @@ import { DepartmentRestService } from 'src/app/services/departmentRest/departmen
 })
 export class ClientDepartmentComponent implements OnInit {
   departments: any
+  searchDepartment:string='';
 
   constructor(
     private departmentRest: DepartmentRestService

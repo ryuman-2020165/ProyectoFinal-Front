@@ -8,6 +8,7 @@ import { TripRestService } from 'src/app/services/tripRest/trip-rest.service';
 })
 export class ClientTripComponent implements OnInit {
   trips: any
+  searchTrip:string='';
 
   constructor(
     private tripRest: TripRestService

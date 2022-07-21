@@ -16,6 +16,7 @@ export class ClientDestinyComponent implements OnInit {
   destinys: any
   destiny: DestinyModel
   destinyGetId: any
+  searchDestiny:string = '';
 
 
   constructor(

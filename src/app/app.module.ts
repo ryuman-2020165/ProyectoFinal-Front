@@ -23,6 +23,11 @@ import { ClientTripComponent } from './components/Client/client-trip/client-trip
 import { LodgeComponent } from './components/admin/lodge/lodge.component';
 import { ClientLodgeComponent } from './components/Client/client-lodge/client-lodge.component';
 import { ClientDestinyComponent } from './components/Client/client-destiny/client-destiny.component';
+import { SearchCategoriesPipe } from './pipes/search-categories.pipe';
+import { SearchDepartmentPipe } from './pipes/search-department.pipe';
+import { SeachLodgePipe } from './pipes/search-lodge.pipe';
+import { SearchTripPipe } from './pipes/search-trip.pipe';
+import { SearchDestinyPipe } from './pipes/search-destiny.pipe';
 
 
 
@@ -48,6 +53,11 @@ import { ClientDestinyComponent } from './components/Client/client-destiny/clien
     LodgeComponent,
     ClientLodgeComponent,
     ClientDestinyComponent,
+    SearchCategoriesPipe,
+    SearchDepartmentPipe,
+    SeachLodgePipe,
+    SearchTripPipe,
+    SearchDestinyPipe,
 
 
     

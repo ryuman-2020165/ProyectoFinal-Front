@@ -11,6 +11,7 @@ export class TripComponent implements OnInit {
   trips: any
   trip: TripModel
   tripGetId: any
+  searchTrip: string = '';
   constructor(
     private tripRest: TripRestService
   ) {

@@ -3,6 +3,10 @@
     
 
     <h1 class="pt-3" style="text-align: center;">Departamentos</h1>
+    <div class="input-group m-4">
+      <input [(ngModel)]="searchDepartment" type="text" class="form-control" placeholder="Buscar Usuarios" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button style="background-color: #ffff;" class="btn btn-outline-danger me-5" type="button" id="button-addon2">Buscar</button>
+    </div>
     
     
         
@@ -11,7 +15,7 @@
         <h2></h2>
     
         <div class="row m-0">
-          <div *ngFor="let department of departments;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
+          <div *ngFor="let department of departments | searchDepartment:searchDepartment;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
             <div  class="card">
               <div class="card-body">
                 <span class="badge bg-danger">{{i+1}}</span>

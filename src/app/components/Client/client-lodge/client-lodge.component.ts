@@ -11,6 +11,7 @@ export class ClientLodgeComponent implements OnInit {
 lodges: any
 categories: any
 departments: any
+searchLodge:string = '';
 
   constructor(
     private lodgeRest: LodgeRestService,

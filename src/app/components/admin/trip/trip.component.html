@@ -3,6 +3,10 @@
 
     <body background="../../../../assets/img/banner.jpg">
     <h1 class="pt-3" style="text-align: center;">Viajes</h1>
+    <div class="input-group m-4">
+      <input [(ngModel)]="searchTrip" type="text" class="form-control" placeholder="Buscar Usuarios" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button style="background-color: #ffff;" class="btn btn-outline-danger me-5" type="button" id="button-addon2">Buscar</button>
+    </div>
     <div class="text-center m-3">
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#TripModal">Agregar
             Viajes</button>
@@ -12,7 +16,7 @@
     <div class="container  mt-5 mb-5">
         <h2></h2>
         <div class="row m-0">
-          <div *ngFor="let trip of trips;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
+          <div *ngFor="let trip of trips | searchTrip:searchTrip;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
             <div class="card">
               <div class="card-body">
                 <span class="badge bg-danger">{{i+1}}</span>
