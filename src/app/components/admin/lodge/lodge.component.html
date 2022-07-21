@@ -1,0 +1,134 @@
+<app-navbar></app-navbar>
+    
+    <body background="../../../../assets/img/banner.jpg">
+    <h1 class="pt-3" style="text-align: center;">Hospedajes</h1>
+    <div class="text-center m-3">
+    <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#LodgeModal">Agregar Hospedaje</button>
+    </div>
+
+    <div class="container  mt-5 mb-5">
+        <h2></h2>
+        <div class="row m-0">
+          <div *ngFor="let lodge of lodges;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
+            <div class="card">
+              <div class="card-body">
+                <span class="badge bg-danger">{{i+1}}</span>
+                <h3 class="card-title">{{lodge.name}}</h3>
+                <h6 class="card-subtitle mb-2 text-muted">{{lodge._id}}</h6>
+                <h6 class="card-text">Descripción: {{lodge.description}}</h6>
+                <h6 class="card-text">Precio: {{lodge.price}}</h6>
+                <h6 class="card-text">Popularidad: {{lodge.popularity}}</h6>
+                <br>
+                <h6 class="card-subtitle mb-2 text-muted">Categoria: {{ lodge.category.name }}</h6>
+                <h6 class="card-subtitle mb-2 text-muted">Departamento: {{ lodge.department.name }}</h6>
+                <button class="btn btn-warning m-2 " (click)="getLodge(lodge._id)" data-bs-toggle="modal" data-bs-target="#updateLodgeModal" aria-controls="offcanvasExample">Update</button>
+                <button class="btn btn-danger" (click)="deleteLodge(lodge._id)">Delete</button>
+              </div>
+            </div>
+        </div>
+      </div>
+      </div>
+
+       <!-- Add category modal -->
+
+     <div class="modal fade" id="LodgeModal" tabindex="-1" aria-labelledby="LodgeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="LodgeModalLabel">Agregar Hospedaje</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form #addLodgeForm="ngForm">
+                    <div class="mb-3">
+                      <label for="NameInput" class="form-label">Nombre</label>
+                      <input [(ngModel)]="lodge.name" name="name" type="email" class="form-control" id="NameInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="DescriptionInput" class="form-label">Descripción</label>
+                        <input [(ngModel)]="lodge.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="PriceInput" class="form-label">Precio</label>
+                        <input [(ngModel)]="lodge.price" name="price" type="number" class="form-control" id="PriceInput">
+                    </div>
+                    <div class="mb-3">
+                        <label for="PopularityInput" class="form-label">Popularidad</label>
+                        <input [(ngModel)]="lodge.popularity" name="popularity" type="number" class="form-control" id="PopularityInput">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Category</label>
+                        <select [(ngModel)]="lodge.category" name="category" class="form-select" aria-label="Default select example">
+                          <option disabled value="" selected>Open this select menu</option>
+                          <option *ngFor="let category of categories" value="{{ category._id }}">{{ category.name }}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Departamento</label>
+                        <select [(ngModel)]="lodge.department" name="department" class="form-select" aria-label="Default select example">
+                          <option disabled value="" selected>Open this select menu</option>
+                          <option *ngFor="let department of departments" value="{{ department._id }}">{{ department.name }}</option>
+                        </select>
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+              <button (click)="addLodge(addLodgeForm)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+  <!-- Update category modal -->
+
+  <div class="modal fade" id="updateLodgeModal" tabindex="-1" aria-labelledby="updatelodgeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updatelodgeModalLabel">Editar Hospedaje</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <form (ngSubmit)="updateLodge()" *ngIf="lodgeGetId">
+                  <div class="mb-3">
+                    <label for="NameInput" class="form-label">Nombre</label>
+                    <input [(ngModel)]="lodgeGetId.name" name="name" type="name" class="form-control" id="name">
+                  </div>
+                  <div class="mb-3">
+                      <label for="DescriptionInput" class="form-label">Descripción</label>
+                      <input [(ngModel)]="lodgeGetId.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                    </div>
+                    <div class="mb-3">
+                      <label for="PriceInput" class="form-label">Precio</label>
+                      <input [(ngModel)]="lodgeGetId.price" name="price" type="number" class="form-control" id="PriceInput">
+                    </div>
+                    <div class="mb-3">
+                      <label for="PopularityInput" class="form-label">Popularidad</label>
+                      <input [(ngModel)]="lodgeGetId.popularity" name="popularity" type="number" class="form-control" id="PopularityInput">
+                    </div>
+                    <div class="mb-3">
+                    <label for="CategoryInput" class="form-label">Categoria</label>
+                        <select [(ngModel)]="lodgeGetId.category" name="category" class="form-select" aria-label="Default select example">
+                          <option disabled value="" selected>Open this select menu</option>
+                          <option *ngFor="let category of categories" value="{{ category._id }}">{{ category.name }}</option>
+                        </select>
+                      </div>
+                      <div class="mb-3">
+                        <label for="DepartmentInput" class="form-label">Departamento</label>
+                        <select [(ngModel)]="lodgeGetId.department" name="department" class="form-select" aria-label="Default select example">
+                          <option disabled value="" selected>Open this select menu</option>
+                          <option *ngFor="let department of departments" value="{{ department._id }}">{{ department.name }}</option>
+                        </select>
+                      </div>
+                      <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
+                      </div>
+                </form>    
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>

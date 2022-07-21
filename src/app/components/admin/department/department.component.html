@@ -6,35 +6,25 @@
     <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#DepartmentModal">Agregar Departamento</button>
     </div>
 
-
-
     <div class="container  mt-5 mb-5">
       <h2></h2>
       <div class="row m-0">
-    
         <div *ngFor="let department of departments;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
           <div class="card">
             <div class="card-body">
               <span class="badge bg-danger">{{i+1}}</span>
               <h3 class="card-title">{{department.name}}</h3>
-              <p class="card-text">{{department.description}}</p>
               <h6 class="card-subtitle mb-2 text-muted">{{department._id}}</h6>
+              <p class="card-text">Descripción: {{department.description}}</p>
               <button class="btn btn-warning m-2 " (click)="getDepartment(department._id)" data-bs-toggle="modal" data-bs-target="#updateDepartmentModal" aria-controls="offcanvasExample">Update</button>
               <button class="btn btn-danger" (click)="deleteDepartment(department._id)">Delete</button>
             </div>
           </div>
-    
       </div>
     </div>
     </div>
     
-
-
-
-
-
-
-     <!-- Add category modal -->
+     <!-- Add department modal -->
      <div class="modal fade" id="DepartmentModal" tabindex="-1" aria-labelledby="DepartmentModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -44,7 +34,6 @@
             </div>
     
             <div class="modal-body">
-    
                 <form #saveDepartmentForm="ngForm">
                     <div class="mb-3">
                       <label for="NameInput" class="form-label">Nombre</label>
@@ -53,21 +42,18 @@
                     <div class="mb-3">
                         <label for="DescriptionInput" class="form-label">Descripción</label>
                         <input [(ngModel)]="department.description" name="description" type="email" class="form-control" id="DescriptionInput">
-                      </div>
-    
+                    </div>
                   </form>
-    
             </div>
-    
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-              <button (click)="saveDepartment(saveDepartmentForm)" type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+              <button (click)="saveDepartment(saveDepartmentForm)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
             </div>
           </div>
         </div>
       </div>
   
-  <!-- Update category modal -->
+  <!-- Update department modal -->
   <div class="modal fade" id="updateDepartmentModal" tabindex="-1" aria-labelledby="updatedepartmentModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -75,28 +61,25 @@
             <h5 class="modal-title" id="updatedepartmentModalLabel">Editar Categoria</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-  
           <div class="modal-body">
-  
               <form (ngSubmit)="updateDepartment()" *ngIf="departmentGetId">
                   <div class="mb-3">
                     <label for="NameInput" class="form-label">Nombre</label>
-                    <input [(ngModel)]="departmentGetId.name" name="name" type="name" class="form-control" id="name">
+                      <input [(ngModel)]="departmentGetId.name" name="name" type="name" class="form-control" id="name">
                   </div>
                   <div class="mb-3">
                       <label for="DescriptionInput" class="form-label">Descripción</label>
-                      <input [(ngModel)]="departmentGetId.description" name="description" type="email" class="form-control" id="DescriptionInput">
-                    </div>
+                        <input [(ngModel)]="departmentGetId.description" name="description" type="email" class="form-control" id="DescriptionInput">
+                  </div>
+                  <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
-                </form>
-  
-  
-            
+                    <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
+                      </div>
+              </form> 
           </div>
         </div>
-      </div>
     </div>
+  </div>
     
 </body>
     

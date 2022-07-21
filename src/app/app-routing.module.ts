@@ -13,6 +13,7 @@ import { MyProfileComponent } from './components/Client/my-profile/my-profile.co
 import { ClientCategoryComponent } from './components/Client/client-category/client-category.component';
 import { ClientDepartmentComponent } from './components/Client/client-department/client-department.component';
 import { ClientTripComponent } from './components/Client/client-trip/client-trip.component';
+import { LodgeComponent } from './components/admin/lodge/lodge.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'admin/category', canActivate: [UserGuard], component: CategoryComponent },
   { path: 'admin/department', canActivate: [UserGuard], component: DepartmentComponent },
   { path: 'admin/trip', canActivate: [UserGuard], component: TripComponent },
+  { path: 'admin/lodge', canActivate: [UserGuard], component: LodgeComponent},
 
 
   { path: '**', component: NotFoundComponent },

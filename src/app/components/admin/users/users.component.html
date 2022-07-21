@@ -3,41 +3,32 @@
 <body background="../../../../assets/img/banner.jpg">
   
 <div>
-
-<h1 class="pt-3" style="text-align: center;">Gestión de usuarios</h1>
-<div class="input-group m-4">
-  <input [(ngModel)]="search" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <button style="background-color: #9EA5A4;" class="btn btn-outline-secondary me-5" type="button" id="button-addon2">Button</button>
-</div>
-<div class="text-center m-3">
-<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#UserModal">Agregar usuario</button>
-</div>
-
-
-
-<div class="container  mt-5 mb-5">
-  <h2></h2>
-  <div class="row m-0">
-
-    <div *ngFor="let UsersAdmin of users | search:search;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
-      <div class="card">
-        <div class="card-body">
-          <span class="badge bg-danger">{{i+1}}</span>
-          <h3 class="card-title">{{UsersAdmin.name}}</h3>
-          <h6 class="card-subtitle mb-2 text-muted">Username: {{UsersAdmin.username}}</h6>
-          <p class="card-text">Rol: {{UsersAdmin.role}}</p>
-          <h6 class="card-subtitle mb-2 text-muted">{{UsersAdmin._id}}</h6>
-          <button class="btn btn-warning m-2 " (click)="getUser(UsersAdmin._id)" data-bs-toggle="modal" data-bs-target="#updateUserModal" aria-controls="offcanvasExample">Update</button>
-          <button class="btn btn-danger" (click)="deleteUser(UsersAdmin._id)">Delete</button>
+  <h1 class="pt-3" style="text-align: center;">Gestión de usuarios</h1>
+    <div class="input-group m-4">
+      <input [(ngModel)]="search" type="text" class="form-control" placeholder="Buscar Usuarios" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button style="background-color: #ffff;" class="btn btn-outline-danger me-5" type="button" id="button-addon2">Buscar</button>
+    </div>
+    <div class="text-center m-3">
+      <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#UserModal">Agregar usuario</button>
+    </div>
+  <div class="container  mt-5 mb-5">
+      <h2></h2>
+    <div class="row m-0">
+      <div *ngFor="let UsersAdmin of users | search:search;let i=index;" class="col-xl-3 col-lg-4 col-md-6 col-12 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <span class="badge bg-danger">{{i+1}}</span>
+            <h3 class="card-title">{{UsersAdmin.name}}</h3>
+            <h6 class="card-subtitle mb-2 text-muted">{{UsersAdmin._id}}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Username: {{UsersAdmin.username}}</h6>
+            <p class="card-text">Rol: {{UsersAdmin.role}}</p>
+            <button class="btn btn-warning m-2 " (click)="getUser(UsersAdmin._id)" data-bs-toggle="modal" data-bs-target="#updateUserModal" aria-controls="offcanvasExample">Update</button>
+            <button class="btn btn-danger" (click)="deleteUser(UsersAdmin._id)">Delete</button>
+          </div>
         </div>
       </div>
-
+   </div>
   </div>
-</div>
-</div>
-
-
-
 
 <!--Add user modal for admin-->
 
@@ -48,9 +39,7 @@
           <h5 class="modal-title" id="UserModalLabel">Agregar Usuario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
         <div class="modal-body">
-
             <form #addUserForm="ngForm">
                 <div class="mb-3">
                   <label for="NameInput" class="form-label">Nombre</label>
@@ -80,13 +69,14 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button (click)="saveUser(addUserForm)"  type="button" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
+          <button (click)="saveUser(addUserForm)"  type="button" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
         </div>
       </div>
     </div>
   </div>
 
   <!--Update Modal user for admin-->
+
   <div class="modal fade" id="updateUserModal" tabindex="-1" aria-labelledby="updateuserModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -94,9 +84,7 @@
           <h5 class="modal-title" id="updateUserModalLabel">Actualizar usuario</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-
         <div class="modal-body">
-
             <form (ngSubmit)="updateUser()" *ngIf="userGetId">
               <div class="mb-3">
                 <label for="NameInput" class="form-label">Nombre</label>
@@ -105,26 +93,25 @@
               <div class="mb-3">
                   <label for="UsernameInput" class="form-label">Username</label>
                   <input [(ngModel)]="userGetId.username" name="username" type="email" class="form-control" id="UsernameInput">
-                </div>
-                <div class="mb-3">
+              </div>
+              <div class="mb-3">
                   <label for="RoleInput" class="form-label">Role</label>
                   <input [(ngModel)]="userGetId.role" name="role" type="email" class="form-control" id="RoleInput">
-                </div>
-                <div class="mb-3">
+              </div>
+              <div class="mb-3">
                   <label for="PhoneInput" class="form-label">Phone</label>
                   <input [(ngModel)]="userGetId.phone" name="phone" type="email" class="form-control" id="PhoneInput">
-                </div>
-               
-                <div class="mb-3">
+              </div>
+              <div class="mb-3">
                   <label for="EmanilInput" class="form-label">Email</label>
                   <input [(ngModel)]="userGetId.email" name="password" type="email" class="form-control" id="EmanilInput">
-                </div>
+              </div>
+              <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                  <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Guardar</button>
-              </form>
-
-
-          
+                  <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
+                </div>
+              </form>  
+              
         </div>
       </div>
     </div>

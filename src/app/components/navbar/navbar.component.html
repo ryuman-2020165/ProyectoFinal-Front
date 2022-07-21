@@ -37,6 +37,9 @@
           <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/trip" class="nav-link">Viaje</a>
         </li>
         <li class="nav-item">
+          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/lodge" class="nav-link">Hospedajes</a>
+        </li>
+        <li class="nav-item">
           <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/myProfile" class="nav-link">Perfil</a>
         </li>
         <li class="nav-item">

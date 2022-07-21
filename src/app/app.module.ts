@@ -20,6 +20,8 @@ import { MyProfileComponent } from './components/Client/my-profile/my-profile.co
 import { ClientCategoryComponent } from './components/Client/client-category/client-category.component';
 import { ClientDepartmentComponent } from './components/Client/client-department/client-department.component';
 import { ClientTripComponent } from './components/Client/client-trip/client-trip.component';
+import { LodgeComponent } from './components/admin/lodge/lodge.component';
+
 
 
 @NgModule({
@@ -39,7 +41,9 @@ import { ClientTripComponent } from './components/Client/client-trip/client-trip
     MyProfileComponent,
     ClientCategoryComponent,
     ClientDepartmentComponent,
-    ClientTripComponent
+    ClientTripComponent,
+    LodgeComponent,
+
     
   ],
   imports: [
