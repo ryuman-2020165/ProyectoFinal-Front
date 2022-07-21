@@ -21,6 +21,9 @@ import { ClientCategoryComponent } from './components/Client/client-category/cli
 import { ClientDepartmentComponent } from './components/Client/client-department/client-department.component';
 import { ClientTripComponent } from './components/Client/client-trip/client-trip.component';
 import { LodgeComponent } from './components/admin/lodge/lodge.component';
+import { ClientLodgeComponent } from './components/Client/client-lodge/client-lodge.component';
+import { ClientDestinyComponent } from './components/Client/client-destiny/client-destiny.component';
+
 
 
 
@@ -43,6 +46,9 @@ import { LodgeComponent } from './components/admin/lodge/lodge.component';
     ClientDepartmentComponent,
     ClientTripComponent,
     LodgeComponent,
+    ClientLodgeComponent,
+    ClientDestinyComponent,
+
 
     
   ],

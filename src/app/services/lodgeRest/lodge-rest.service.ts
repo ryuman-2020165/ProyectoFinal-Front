@@ -42,7 +42,7 @@ export class LodgeRestService {
   }
 
   getLodgesClient(){
-    return this.http.get(environment.baseUrl+'lodge/getLodgesClient',{headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'lodge/getLodgesClients',{headers: this.httpOptions})
   }
   
 }

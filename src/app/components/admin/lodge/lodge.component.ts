@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LodgeModel } from 'src/app/models/lodge.model';
 import { LodgeRestService } from 'src/app/services/lodgeRest/lodge-rest.service';
-import { CategoryModel } from 'src/app/models/category.model';
 import { CategoryRestService } from 'src/app/services/categoryRest/category-rest.service';
-import { DepartmentModel } from 'src/app/models/department.model';
 import { DepartmentRestService } from 'src/app/services/departmentRest/department-rest.service';
 
 @Component({
@@ -17,8 +15,6 @@ import { DepartmentRestService } from 'src/app/services/departmentRest/departmen
     lodges: any
     lodge: LodgeModel
     lodgeGetId: any
-    idDepartment: any;
-    idCategory: any;
     constructor(
       private lodgeRest: LodgeRestService,
       private categoryRest: CategoryRestService,
