@@ -17,6 +17,7 @@ import { LodgeComponent } from './components/admin/lodge/lodge.component';
 import { ClientLodgeComponent } from './components/Client/client-lodge/client-lodge.component';
 import { ClientDestinyComponent } from './components/Client/client-destiny/client-destiny.component';
 import { DestinyComponent } from './components/admin/destiny/destiny.component';
+import { AboutUsComponent } from './components/Client/about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'trip', component:ClientTripComponent},
   { path: 'lodge', component:ClientLodgeComponent},
   { path: 'destiny', component:ClientDestinyComponent},
+  { path: 'aboutUs', component: AboutUsComponent},
   { path: 'admin/users', canActivate: [UserGuard], component: UsersComponent },
   { path: 'admin/category', canActivate: [UserGuard], component: CategoryComponent },
   { path: 'admin/department', canActivate: [UserGuard], component: DepartmentComponent },
