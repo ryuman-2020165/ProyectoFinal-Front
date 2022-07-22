@@ -43,7 +43,11 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <form #addDestinyForm="ngForm">
+            <form #addDestinyForm="ngForm"> 
+              <div class="mb-3">
+                <label for="StartDateInput" class="form-label">Fecha de inicio</label>
+                <input [(ngModel)]="destiny.startDate" name="startDate" type="date" class="form-control" id="startDateInput">
+              </div>
                 <div class="mb-3">
                     <label for="EndDateInput" class="form-label">Fecha que finaliza</label>
                     <input [(ngModel)]="destiny.endDate" name="endDate" type="date" class="form-control" id="EndDateInput">
@@ -81,7 +85,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-          <form (ngSubmit)="updateDestiny()" *ngIf="destinyGetId">
+          <form (ngSubmit)="updateDestiny()" *ngIf="destinyGetId"> 
               <div class="mb-3">
                   <label for="EndDateInput" class="form-label">Fecha que finaliza</label>
                   <input [(ngModel)]="destinyGetId.endDate" name="endDate" type="date" class="form-control" id="EndDateInput">
