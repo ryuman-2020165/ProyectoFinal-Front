@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
     
 <body background="../../../../assets/img/banner.jpg">
-<h1 class="pt-3" style="text-align: center;">Destinos</h1>
+<h1 class="pt-3" style="text-align: center;">Mis Destinos</h1>
 <div class="input-group m-4">
   <input [(ngModel)]="searchDestiny" type="text" class="form-control" placeholder="Buscar Usuarios" aria-label="Recipient's username" aria-describedby="button-addon2">
   <button style="background-color: #ffff;" class="btn btn-outline-danger me-5" type="button" id="button-addon2">Buscar</button>
@@ -44,10 +44,7 @@
         </div>
         <div class="modal-body">
             <form #addDestinyForm="ngForm"> 
-              <div class="mb-3">
-                <label for="StartDateInput" class="form-label">Fecha de inicio</label>
-                <input [(ngModel)]="destiny.startDate" name="startDate" type="date" class="form-control" id="startDateInput">
-              </div>
+              
                 <div class="mb-3">
                     <label for="EndDateInput" class="form-label">Fecha que finaliza</label>
                     <input [(ngModel)]="destiny.endDate" name="endDate" type="date" class="form-control" id="EndDateInput">
