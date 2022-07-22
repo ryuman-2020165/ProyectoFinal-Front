@@ -28,6 +28,7 @@ import { SearchDepartmentPipe } from './pipes/search-department.pipe';
 import { SeachLodgePipe } from './pipes/search-lodge.pipe';
 import { SearchTripPipe } from './pipes/search-trip.pipe';
 import { SearchDestinyPipe } from './pipes/search-destiny.pipe';
+import { DestinyComponent } from './components/admin/destiny/destiny.component';
 
 
 
@@ -58,6 +59,7 @@ import { SearchDestinyPipe } from './pipes/search-destiny.pipe';
     SeachLodgePipe,
     SearchTripPipe,
     SearchDestinyPipe,
+    DestinyComponent,
 
 
     

@@ -20,30 +20,14 @@ export class DestinyRestService {
 
 
   addDestiny(params: {}, idTrip: string, idLodge: string) {
-    return this.http.post(environment.baseUrl + 'lodge/addDestiny/'+idTrip + '/'+ idLodge, params, { headers: this.httpOptions })
+    return this.http.post(environment.baseUrl + 'destiny/addDestiny/'+idTrip + '/'+ idLodge, params, { headers: this.httpOptions })
   }
   getDestinysClients(){
     return this.http.get(environment.baseUrl+'destiny/getDestinysClients',{headers: this.httpOptions})
   }
 
   getDestinyClient(id: string){
-    return this.http.get(environment.baseUrl+'destiny/getDestinyClient'+ id,{headers: this.httpOptions})
-  }
-
-  getTripsClient(){
-    return this.http.get(environment.baseUrl+'destiny/getTripsClient',{headers: this.httpOptions})
-  }
-
-  getTripClient(id: string){
-    return this.http.get(environment.baseUrl+'destiny/getTripsClient'+ id,{headers: this.httpOptions})
-  }
-
-  getLodgesClient(){
-    return this.http.get(environment.baseUrl+'destiny/getLodgesClients',{headers: this.httpOptions})
-  }
-
-  getLodgeClient(id: string){
-    return this.http.get(environment.baseUrl+'destiny/getLodgeClient'+ id,{headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'destiny/getDestinyClient/'+ id,{headers: this.httpOptions})
   }
 
   updateDestiny(params: {}, id: string) {
@@ -53,6 +37,24 @@ export class DestinyRestService {
   deleteDestiny(id: string) {
     return this.http.delete(environment.baseUrl + 'destiny/deleteDestiny/' + id, { headers: this.httpOptions })
   }
+
+  updateDestinyAdmin(params: {}, id: string) {
+    return this.http.put(environment.baseUrl + 'destiny/updateDestinyAdmin/' + id, params, { headers: this.httpOptions })
+  }
+
+  deleteDestinyAdmin(id: string) {
+    return this.http.delete(environment.baseUrl + 'destiny/deleteDestinyAdmin/' + id, { headers: this.httpOptions })
+  }
+
+  getDestinysAdmin(){
+    return this.http.get(environment.baseUrl+'destiny/getDestinysAdmin',{headers: this.httpOptions})
+  }
+
+  getDestinyAdmin(id: string){
+    return this.http.get(environment.baseUrl+'destiny/getDestinyAdmin/'+ id,{headers: this.httpOptions})
+  }
+
+
 
 
 }

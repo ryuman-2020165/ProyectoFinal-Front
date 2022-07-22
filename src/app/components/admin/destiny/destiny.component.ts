@@ -4,13 +4,12 @@ import { DestinyRestService } from 'src/app/services/destinyRest/destiny-rest.se
 import { TripRestService } from 'src/app/services/tripRest/trip-rest.service';
 import { DestinyModel } from 'src/app/models/destiny.model';
 
-
 @Component({
-  selector: 'app-client-destiny',
-  templateUrl: './client-destiny.component.html',
-  styleUrls: ['./client-destiny.component.css']
+  selector: 'app-destiny',
+  templateUrl: './destiny.component.html',
+  styleUrls: ['./destiny.component.css']
 })
-export class ClientDestinyComponent implements OnInit {
+export class DestinyComponent implements OnInit {
   trips: any
   lodges: any
   destinys: any
@@ -18,25 +17,23 @@ export class ClientDestinyComponent implements OnInit {
   destinyGetId: any
   searchDestiny: any;
 
-
   constructor(
     private lodgeRest : LodgeRestService,
     private tripRest: TripRestService,
     private destinyRest: DestinyRestService
-  ) {
+  ) { 
     this.destiny = new DestinyModel('','','','');
-   }
+  }
 
   ngOnInit(): void {
-    this.getDestinysClients();
-    this.getTripsClient();
-    this.getLodgesClient();
-    
+    this.getDestinys();
+    this.getTrips();
+    this.getLodges();
   }
 
 
-  getLodgesClient(){
-    this.lodgeRest.getLodgesClient().subscribe({
+  getLodges(){
+    this.lodgeRest.getLodges().subscribe({
       next: (res:any)=>{
         this.lodges = res.lodges;
       },
@@ -46,8 +43,8 @@ export class ClientDestinyComponent implements OnInit {
     });
   }
 
-  getTripsClient() {
-    this.tripRest.getTripsClient().subscribe({
+  getTrips() {
+    this.tripRest.getTrips().subscribe({
       next: (res: any) => {
         
         this.trips = res.findTrips;
@@ -58,8 +55,8 @@ export class ClientDestinyComponent implements OnInit {
     });
   }
 
-  getDestinysClients() {
-    this.destinyRest.getDestinysClients().subscribe({
+  getDestinys() {
+    this.destinyRest.getDestinysAdmin().subscribe({
       next: (res: any) => {
         
         this.destinys = res.destinys;
@@ -72,29 +69,13 @@ export class ClientDestinyComponent implements OnInit {
   }
 
 
-  addDestiny(addDestinyForm: any){
-    this.destinyRest.addDestiny(this.destiny, this.destiny.trip, this.destiny.lodge).subscribe({
-      next: (res:any)=>{
-        alert(res.message)
-        this.getLodgesClient();
-        this.getTripsClient();
-        this.getDestinysClients();
-
-        addDestinyForm.reset();
-      },
-      error: (err)=>{
-        alert(err.error.message || err.error)
-      }
-    })
-  }
-
   updateDestiny(){
-    this.destinyRest.updateDestiny(this.destinyGetId,this.destinyGetId._id).subscribe({
+    this.destinyRest.updateDestinyAdmin(this.destinyGetId,this.destinyGetId._id).subscribe({
       next: (res:any)=>{
         alert(res.message)
-        this.getLodgesClient();
-        this.getTripsClient();
-        this.getDestinysClients();
+        this.getLodges();
+        this.getTrips();
+        this.getDestinys();
       },
       error: (err)=>{
         alert(err.error.message || err.error)
@@ -103,12 +84,12 @@ export class ClientDestinyComponent implements OnInit {
     })
   }
 
-  getDestinyClient(id:string){
-    this.destinyRest.getDestinyClient(id).subscribe({
+  getDestiny(id:string){
+    this.destinyRest.getDestinyAdmin(id).subscribe({
       next: (res:any)=>{
         
         this.destinyGetId = res.destiny;
-        
+        console.log(res);
       },
       error: (err)=>{
         console.log(err.error.message);
@@ -117,11 +98,11 @@ export class ClientDestinyComponent implements OnInit {
 }
 
 deleteDestiny(id:string){
-  this.destinyRest.deleteDestiny(id).subscribe({
+  this.destinyRest.deleteDestinyAdmin(id).subscribe({
     next: (res:any)=>{
       alert(res.message)
 
-      this.getDestinysClients();
+      this.getDestinys();
     },
     error: (err)=>{
       alert(err.error.message || err.error)
@@ -129,4 +110,5 @@ deleteDestiny(id:string){
     }
   })
 }
+
 }

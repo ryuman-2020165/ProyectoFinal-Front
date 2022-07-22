@@ -1,14 +1,11 @@
 
 <app-navbar></app-navbar>
     
-<body background="../../../../assets/img/banner.jpg">
+<body background="../../../../assets/img/fondAdmin5.jpg">
 <h1 class="pt-3" style="text-align: center;">Destinos</h1>
 <div class="input-group m-4">
   <input [(ngModel)]="searchDestiny" type="text" class="form-control" placeholder="Buscar Usuarios" aria-label="Recipient's username" aria-describedby="button-addon2">
   <button style="background-color: #ffff;" class="btn btn-outline-danger me-5" type="button" id="button-addon2">Buscar</button>
-</div>
-<div class="text-center m-3">
-<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#DestinyModal">Agregar Destino</button>
 </div>
 
 <div class="container  mt-5 mb-5">
@@ -25,7 +22,7 @@
             <br>
             <h6 class="card-subtitle mb-2 text-muted">Viaje: {{ destiny.trip.name }}</h6>
             <h6 class="card-subtitle mb-2 text-muted">Departamento: {{ destiny.lodge.name }}</h6>
-            <button class="btn btn-warning m-2 " (click)="getDestinyClient(destiny._id)" data-bs-toggle="modal" data-bs-target="#updateDestinyModal" aria-controls="offcanvasExample">Update</button>
+            <button class="btn btn-warning m-2 " (click)="getDestiny(destiny._id)" data-bs-toggle="modal" data-bs-target="#updateDestinyModal" aria-controls="offcanvasExample">Update</button>
             <button class="btn btn-danger" (click)="deleteDestiny(destiny._id)">Delete</button>
           </div>
         </div>
@@ -33,45 +30,6 @@
   </div>
   </div>
 
-   <!-- Add category modal -->
-
- <div class="modal fade" id="DestinyModal" tabindex="-1" aria-labelledby="DestinyModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="DestinyModalLabel">Agregar Destino</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-            <form #addDestinyForm="ngForm">
-                <div class="mb-3">
-                    <label for="EndDateInput" class="form-label">Fecha que finaliza</label>
-                    <input [(ngModel)]="destiny.endDate" name="endDate" type="date" class="form-control" id="EndDateInput">
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Viaje</label>
-                    <select [(ngModel)]="destiny.trip" name="trip" class="form-select" aria-label="Default select example">
-                      <option disabled value="" selected>Open this select menu</option>
-                      <option *ngFor="let trip of trips" value="{{ trip._id }}">{{ trip.name }}</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Hospedaje</label>
-                    <select [(ngModel)]="destiny.lodge" name="lodge" class="form-select" aria-label="Default select example">
-                      <option disabled value="" selected>Open this select menu</option>
-                      <option *ngFor="let lodge of lodges" value="{{ lodge._id }}">{{ lodge.name }}</option>
-                    </select>
-                </div>
-              </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button (click)="addDestiny(addDestinyForm)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
 
 <div class="modal fade" id="updateDestinyModal" tabindex="-1" aria-labelledby="updatedestinyModalLabel" aria-hidden="true">
 <div class="modal-dialog">
@@ -88,14 +46,14 @@
                 </div>
                 <div class="mb-3">
                 <label for="TripInput" class="form-label">Viaje</label>
-                    <select [(ngModel)]="destinyGetId.trip" name="trip" class="form-select" aria-label="Default select example">
+                    <select [(ngModel)]="destinyGetId.trip._id" name="trip" class="form-select" aria-label="Default select example">
                       <option disabled value="" selected>Open this select menu</option>
                       <option *ngFor="let trip of trips" value="{{ trip._id }}">{{ trip.name }}</option>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label for="LodgeInput" class="form-label">Hospedaje</label>
-                    <select [(ngModel)]="destinyGetId.lodge" name="lodge" class="form-select" aria-label="Default select example">
+                    <select [(ngModel)]="destinyGetId.lodge._id" name="lodge" class="form-select" aria-label="Default select example">
                       <option disabled value="" selected>Open this select menu</option>
                       <option *ngFor="let lodge of lodges" value="{{ lodge._id }}">{{ lodge.name }}</option>
                     </select>
