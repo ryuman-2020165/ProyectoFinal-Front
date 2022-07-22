@@ -60,23 +60,32 @@
         <li class="nav-item">
           <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/destiny" class="nav-link">Destinos</a>
         </li>
-
-
-        <li class="nav-item dropdown ">
-          <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-            role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Opciones
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="" (click)="logOut()">Cerrar Sesión</a></li>
-
-          </ul>
+        <li class="nav-item">
+          <a style="color: white;"  >⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
         </li>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-
-
+        <li class="nav-item">
+          <a style="color: white;"  >⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
+        </li>
+        <li class="nav-item">
+          <a style="color: white;"  >⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
+        </li>
+        <li class="nav-item">
+          <a style="color: white;"  >⠀⠀⠀⠀</a>
+        </li>
+        
+        <div class="contenedor " >
+          <li class="nav-item dropdown ">
+            <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+              role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Opciones
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <li><a class="dropdown-item" href="" (click)="logOut()">Cerrar Sesión</a></li>
+        
+            </ul>
+          </li>
         </div>
+        <img class="fotoPerfil" *ngIf="userImage" crossorigin="anonymous" src="{{uri}}" alt="user image">
 
       </ul>
     </div>

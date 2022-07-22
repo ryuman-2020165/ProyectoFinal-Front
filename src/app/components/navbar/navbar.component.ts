@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -12,6 +13,10 @@ export class NavbarComponent implements OnInit {
   username: any;
   name: any;
   surname: any;
+  uri:any;
+  userImage:any;
+  filesToUpload:any
+
 
   constructor(private userRest: UserRestService) {}
 
@@ -24,5 +29,19 @@ export class NavbarComponent implements OnInit {
   }
   logOut() {
     localStorage.clear();
+  }
+
+  fileChange(fileInput:any){
+    this.filesToUpload = <Array<File>>fileInput.target.files;
+    console.log(this.filesToUpload);
+    
+  }
+  ngDoCheck(): void {
+    let outService = localStorage.getItem('outService');
+    if (this.token != '') {
+        this.userImage =  this.userRest.getIdentity().image;
+        this.uri = environment.baseUrl + 'user/getImage/'+this.userImage
+    }
+    
   }
 }
