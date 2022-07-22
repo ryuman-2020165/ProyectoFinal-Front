@@ -1,12 +1,7 @@
-body {
-    height: 100vh;
-    width: 100%;
-    
-}
-
-.pt-3 {
+.pt-3{
     color: white;
 }
+
 
 body {
     
@@ -27,7 +22,6 @@ body {
     .card{
     border:0px;
     height: 100%;
-
     }
     .card-title{
     font-weight: bold;
