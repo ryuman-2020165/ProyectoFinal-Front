@@ -1,24 +1,64 @@
 <app-navbar></app-navbar>
 
-<body background="../../../assets/img/fondoHome.jpg" style="background-size: 100%;">
-  
-	<div class="container-fluid banner">
-		<div class="row">
-			<div class="col-md-12">
-				
-			</div>
-			<div class="col-md-8 offset-md-2 info" >
-        
-				<h1 class="text-center">InTravel</h1>
-        		<div class="pt-3" >
-  
-				<h4 class="text-center">
-					Bienvenido a InTravel, el hogar, tu hogar
-        		</h4><br>
-				<a *ngIf="token" routerLink="/aboutUs" class="btn btn-md text-center">Mas Información</a>
-				<a *ngIf="!token" routerLink="/register" class="btn btn-md text-center">Registrarse</a>
-			</div>
-		</div>
-	</div>
-</div>
+<body >
+    <script src="../../../assets/js/javaScript.js"></script>
+    <section>
+        <h2 id="text"><span>It's time for a new</span><br>Adventure</h2>
+        <img src="../../../assets/img/bird1.png" id="bird1">
+        <img src="../../../assets/img/bird2.png" id="bird2">
+        <img src="../../../assets/img/forest.png" id="forest">
+
+		<a *ngIf="token" routerLink="/aboutUs" class="btn btn-md text-center" id="btn">Mas Información</a>
+				<a *ngIf="!token" routerLink="/register" class="btn btn-md text-center" id="btn">Registrarse</a>
+        <img src="../../../assets/img/rocks.png" id="rocks">
+        <img src="../../../assets/img/water.png" id="water">
+    </section>
+    <div class="sec">
+        <h2>Turismo</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repellat doloribus vero quo accusamus! In voluptatem veniam quis error et, minus voluptatum laudantium quos excepturi tempora culpa sunt velit, sint soluta!
+
+        </p>
+
+    </div>
+
+	<script>
+		let text = document.getElementById('text');
+let bird1 = document.getElementById('bird1');
+let bird2 = document.getElementById('bird2');
+let btn = document.getElementById('btn');
+let rocks = document.getElementById('rocks');
+let forest = document.getElementById('forest');
+let water = document.getElementById('water');
+let header = document.getElementById('header');
+
+window.addEventListener('scroll', function(){
+    let value = window.scrollY;
+    text.style.top = 50 + value * -0.5 + '%';
+    bird1.style.top = value * -1.5 + 'px';
+    bird1.style.left = value * 2 + 'px';
+    bird2.style.top = value * -1.5 + 'px';
+    bird2.style.left = value * -5 + 'px';
+    btn.style.marginTop = value * 1.5 + 'px';
+    rocks.style.top = value * -0.12 + 'px';
+    forest.style.top = value * 0.25 + 'px';
+    header.style.top = value *0.5 +'px';
+
+})
+	</script>
+
 </body>
