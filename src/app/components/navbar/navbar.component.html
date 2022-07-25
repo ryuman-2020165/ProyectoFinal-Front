@@ -1,92 +1,90 @@
-<nav class="navbar navbar-expand-lg navbar bg-dark bg-light">
+<nav class="navbar navbar-expand-lg navbar bg-dark bg-light sticky-top bg-dark px-5" style="background-color: black;">
   <div class="container-fluid">
     <a class="navbar-brand mt-2 mt-lg-0" routerLink="/home">
       <img src="../../../assets/img/Logo2 sin fondo.png" height="30" alt="MDB Logo" loading="lazy" />
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a style="color: white;" routerLink="/home" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="!token" style="color: white;" routerLink="/register" class="nav-link" href="#">Register</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="!token" style="color: white;" routerLink="/login" class="nav-link" href="#">Login</a>
+            </li>
+    
+    
+            <li class="nav-item">
+              <a  *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/users"
+                class="nav-link">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/category"
+                class="nav-link">Categoria</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/department"
+                class="nav-link">Departamento</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/trip" class="nav-link">Viaje</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/lodge" class="nav-link">Hospedajes</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/destiny" class="nav-link">Destinos</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/category" class="nav-link">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/department" class="nav-link">Departamentos</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/trip" class="nav-link">Viajes</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/lodge" class="nav-link">Hospedajes</a>
+            </li>
+            <li class="nav-item">
+              <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/destiny" class="nav-link"> Mis Destinos</a>
+            </li>
+          </ul>
 
-        <li class="nav-item">
-          <a style="color: white;" routerLink="/home" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!token" style="color: white;" routerLink="/register" class="nav-link" href="#">Register</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="!token" style="color: white;" routerLink="/login" class="nav-link" href="#">Login</a>
-        </li>
+          <ul class="navbar-nav d-flex" *ngIf="!token">
+              <li class="nav-item">
+                <img class="ms-1 img-profile"  *ngIf="!userImage " crossorigin="anonymous" src="../../../../assets/img/perfildefecto.jpg" alt="user image">
+              </li>
+          </ul>
 
+          <ul class="navbar-nav d-flex" *ngIf="token">
+              <li class="nav-item dropstart">
+                  <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      
+                      <img class="ms-1 img-profile" *ngIf="userImage" crossorigin="anonymous" src="{{ uri }}">
+                      <img class="ms-1 img-profile"  *ngIf="!userImage " crossorigin="anonymous" src="../../../../assets/img/perfildefecto.jpg" alt="user image">
+                     
 
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/users"
-            class="nav-link">Usuarios</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/category"
-            class="nav-link">Categoria</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/department"
-            class="nav-link">Departamento</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/trip" class="nav-link">Viaje</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/lodge" class="nav-link">Hospedajes</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'ADMIN'" style="color: white;" routerLink="/admin/destiny" class="nav-link">Destinos</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/category" class="nav-link">Categorias</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/department" class="nav-link">Departamentos</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/trip" class="nav-link">Viajes</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/lodge" class="nav-link">Hospedajes</a>
-        </li>
-        <li class="nav-item">
-          <a *ngIf="token && role == 'CLIENT'" style="color: white;" routerLink="/destiny" class="nav-link"> Mis Destinos</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white;"  >⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white;"  >⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white;"  >⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</a>
-        </li>
-        <li class="nav-item">
-          <a style="color: white;"  >⠀⠀⠀⠀</a>
-        </li>
-        
-        <div class="contenedor " >
-          <li class="nav-item dropdown ">
-            <a *ngIf="token" style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-              role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Opciones
-            </a>
-            
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" *ngIf="token && role == 'CLIENT'" style="color: black;" routerLink="/myProfile">Perfil</a></li>
-              <li><a class="dropdown-item" href="" (click)="logOut()">Cerrar Sesión</a></li>
-        
-            </ul>
-          </li>
-        </div>
-        <img class="fotoPerfil" *ngIf="userImage" crossorigin="anonymous" src="{{uri}}" alt="user image">
+                  </a>
 
-      </ul>
-    </div>
+                  <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                      <li><a class="dropdown-item" routerLink="/myProfile">Mi perfil</a></li>
+                      <li><a class="dropdown-item" href="" (click)="logOut()">Cerrar Sesión</a></li>
+                      <li>
+                          <hr class="dropdown-divider">
+                      </li>
+                     
+                  </ul>
+              </li>
+          </ul>
+      </div>
   </div>
 </nav>
