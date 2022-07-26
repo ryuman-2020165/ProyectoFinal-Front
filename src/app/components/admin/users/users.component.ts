@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersRestService } from 'src/app/services/usersRest/users-rest.service';
 import { UserModel } from 'src/app/models/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -53,12 +54,22 @@ export class UsersComponent implements OnInit {
 saveUser(addUserForm: any){
   this.usersRest.saveUser(this.user).subscribe({
     next: (res:any)=>{
-      alert(res.message)
+      Swal.fire({
+        icon: 'success',
+        title: res.message,
+        showConfirmButton:false,
+        timer: 1300,
+      });
       this.getUsers()
       addUserForm.reset();
     },
     error: (err)=>{
-      alert(err.error.message || err.error)
+      Swal.fire({
+        icon: 'warning',
+        title: err.error.message || err.error,
+        showConfirmButton:false,
+        timer: 1300,
+      });
     }
   })
 }
@@ -66,12 +77,22 @@ saveUser(addUserForm: any){
 updateUser(){
   this.usersRest.updateUser(this.userGetId,this.userGetId._id).subscribe({
     next: (res:any)=>{
-      alert(res.message)
+      Swal.fire({
+        icon: 'success',
+        title: res.message,
+        showConfirmButton:false,
+        timer: 1300,
+      });
       
       this.getUsers()
     },
     error: (err)=>{
-      alert(err.error.message || err.error)
+      Swal.fire({
+        icon: 'warning',
+        title: err.error.message || err.error,
+        showConfirmButton:false,
+        timer: 1300,
+      });
       
 
     }
@@ -80,16 +101,43 @@ updateUser(){
 }
 
 
-  deleteUser(id:string){
-    this.usersRest.deleteUser(id).subscribe({
-      next: (res:any)=>{
-        alert(res.message)
-        this.getUsers()
-      },
-      error: (err)=>{
-        alert(err.error.message || err.error)
-  
+deleteUser(id:string){
+    
+    Swal.fire({
+      title: '¿Quieres eliminar el usuario?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Eliminar',
+      denyButtonText: `No eliminar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        this.usersRest.deleteUser(id).subscribe({
+          next: (res:any)=>{
+            Swal.fire({
+              icon: 'success',
+              title: res.message,
+              showConfirmButton:false,
+              timer: 1300,
+            });
+            this.getUsers()
+          },
+          error: (err)=>{
+            Swal.fire({
+              icon: 'warning',
+              title: err.error.message || err.error,
+              showConfirmButton:false,
+              timer: 1300,
+            });
+      
+          }
+        })
+    
+      } else if (result.isDenied) {
+        Swal.fire('No se ha eliminado el usuario')
       }
     })
+
+
   }
 }

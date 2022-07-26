@@ -63,14 +63,14 @@
                     <div class="mb-3">
                         <label class="form-label">Category</label>
                         <select [(ngModel)]="lodge.category" name="category" class="form-select" aria-label="Default select example">
-                          <option disabled value="" selected>Open this select menu</option>
+                          <option disabled value="" selected>Seleccione una categoria</option>
                           <option *ngFor="let category of categories" value="{{ category._id }}">{{ category.name }}</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Departamento</label>
                         <select [(ngModel)]="lodge.department" name="department" class="form-select" aria-label="Default select example">
-                          <option disabled value="" selected>Open this select menu</option>
+                          <option disabled value="" selected>Seleccione un departamento</option>
                           <option *ngFor="let department of departments" value="{{ department._id }}">{{ department.name }}</option>
                         </select>
                     </div>
@@ -114,14 +114,14 @@
                     <div class="mb-3">
                     <label for="CategoryInput" class="form-label">Categoria</label>
                         <select [(ngModel)]="lodgeGetId.category" name="category" class="form-select" aria-label="Default select example">
-                          <option disabled value="" selected>Open this select menu</option>
+                          <option disabled value="" selected>Seleccione una categoria</option>
                           <option *ngFor="let category of categories" value="{{ category._id }}">{{ category.name }}</option>
                         </select>
                       </div>
                       <div class="mb-3">
                         <label for="DepartmentInput" class="form-label">Departamento</label>
                         <select [(ngModel)]="lodgeGetId.department" name="department" class="form-select" aria-label="Default select example">
-                          <option disabled value="" selected>Open this select menu</option>
+                          <option disabled value="" selected>Seleccione un departamento</option>
                           <option *ngFor="let department of departments" value="{{ department._id }}">{{ department.name }}</option>
                         </select>
                       </div>

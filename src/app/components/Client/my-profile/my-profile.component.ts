@@ -3,6 +3,7 @@ import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 import { Router } from '@angular/router';
 import { UploadImageService } from 'src/app/services/userRest/upload-image.service';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-my-profile',
@@ -64,19 +65,50 @@ export class MyProfileComponent implements OnInit, DoCheck {
 
 
   deleteProfile(){
-    this.userRest.deleteProfile(this.userId).subscribe({
-      next: (res:any)=>{
-        alert(res.message)
-        localStorage.clear();
-        this.router.navigateByUrl('/home');
 
+
+
+
+
+    Swal.fire({
+      title: '¿Quieres eliminar tu perfil?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Eliminar',
+      denyButtonText: `No eliminar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
         
-      },
-      error: (err)=>{
-        alert(err.error.message || err.error)
-  
+        this.userRest.deleteProfile(this.userId).subscribe({
+          next: (res:any)=>{
+            Swal.fire({
+              icon: 'success',
+              title: res.message,
+              showConfirmButton:false,
+              timer: 1300,
+            });
+            localStorage.clear();
+            this.router.navigateByUrl('/home');
+    
+            
+          },
+          error: (err)=>{
+            Swal.fire({
+              icon: 'warning',
+              title: err.error.message || err.error,
+              showConfirmButton:false,
+              timer: 1300,
+            });
+      
+          }
+        });
+
+      } else if (result.isDenied) {
+        Swal.fire('Tu perfil no se ha eliminado')
       }
-    });
+    })
+
     
   }
 
@@ -86,12 +118,22 @@ export class MyProfileComponent implements OnInit, DoCheck {
     this.userGetId.role = undefined;
     this.userRest.updateProfile(this.userGetId).subscribe({
       next: (res: any) => {
-        alert(res.message);
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.myProfile();
-        console.log(res)
+
       },
       error: (err) => {
-        console.log(err.error.message);
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        }); 
       },
     });
   }
@@ -107,7 +149,12 @@ export class MyProfileComponent implements OnInit, DoCheck {
     this.uploadImageRest.fileRequest(this.identity._id, this.filesToUpload, 'image').then(
       (res:any)=>{
       if(!res.error){
-        console.log(res.message);
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         localStorage.setItem('identity',JSON.stringify(res.updateUser) )
         
       }else{

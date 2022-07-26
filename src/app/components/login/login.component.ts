@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 import { Router } from '@angular/router';
 import { UserModel } from 'src/app/models/user.model';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -27,10 +28,23 @@ export class LoginComponent implements OnInit {
       next: (res: any)=>{
         localStorage.setItem('token', res.token);
         localStorage.setItem('identity', JSON.stringify(res.already));
+
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.router.navigateByUrl('/home');
       },
       error: (err: any)=>{
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
+       
         
       }
 

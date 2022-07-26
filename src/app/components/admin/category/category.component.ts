@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryModel } from 'src/app/models/category.model';
 import { CategoryRestService } from 'src/app/services/categoryRest/category-rest.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-category',
@@ -38,12 +39,23 @@ export class CategoryComponent implements OnInit {
   addCategory(addCategoryForm: any){
     this.categoryRest.addCategory(this.category).subscribe({
       next: (res:any)=>{
-        alert(res.message)
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.getCategories()
         addCategoryForm.reset();
       },
       error: (err)=>{
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
+        
       }
     })
   }
@@ -52,12 +64,22 @@ export class CategoryComponent implements OnInit {
   updateCategory(){
     this.categoryRest.updateCategory(this.categoryGetId,this.categoryGetId._id).subscribe({
       next: (res:any)=>{
-        
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         
         this.getCategories()
       },
       error: (err)=>{
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
  
       }
     })
@@ -79,16 +101,51 @@ export class CategoryComponent implements OnInit {
 }
 
 deleteCategory(id:string){
-  this.categoryRest.deleteCategory(id).subscribe({
-    next: (res:any)=>{
-      alert(res.message)
-      this.getCategories()
-    },
-    error: (err)=>{
-      alert(err.error.message || err.error)
+  
 
-    }
-  })
+      Swal.fire({
+        title: '¿Quieres eliminar la categoria',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: `No eliminar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          
+
+          this.categoryRest.deleteCategory(id).subscribe({
+            next: (res:any)=>{
+              this.getCategories()
+              Swal.fire({
+                icon: 'success',
+                title: res.message,
+                showConfirmButton:false,
+                timer: 1300,
+              });
+            },
+            error: (err)=>{
+              Swal.fire({
+                icon: 'warning',
+                title: err.error.message || err.error,
+                showConfirmButton:false,
+                timer: 1300,
+              });
+        
+            }
+          })
+
+          
+
+        } else if (result.isDenied) {
+          Swal.fire('No se ha eliminado la categoria')
+        }
+      })
+
+      
+
+
+    
 }
 
 }

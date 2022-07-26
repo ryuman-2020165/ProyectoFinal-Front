@@ -50,8 +50,8 @@
                     <input [(ngModel)]="user.username" name="username" type="email" class="form-control" id="UsernameInput">
                   </div>
                   <div class="mb-3">
-                    <label for="RoleInput" class="form-label">Role</label>
-                    <input [(ngModel)]="user.role" name="role" type="email" class="form-control" id="RoleInput">
+                    <label for="EmanilInput" class="form-label">Email</label>
+                    <input [(ngModel)]="user.email" name="password" type="email" class="form-control" id="EmanilInput">
                   </div>
                   <div class="mb-3">
                     <label for="PhoneInput" class="form-label">Phone</label>
@@ -62,9 +62,16 @@
                     <input [(ngModel)]="user.password" name="password" type="password" class="form-control" id="PasswordInput">
                   </div>
                   <div class="mb-3">
-                    <label for="EmanilInput" class="form-label">Email</label>
-                    <input [(ngModel)]="user.email" name="password" type="email" class="form-control" id="EmanilInput">
-                  </div>
+                    <label class="form-label">Rol</label>
+                    <select [(ngModel)]="user.role" name="department" class="form-select" aria-label="Default select example">
+                      <option disabled value="" selected>Open this select menu</option>
+                      <option value="CLIENT">Cliente</option>
+                      <option value="ADMIN">Administrador</option>
+                    </select>
+                </div>
+
+
+
               </form>
         </div>
         <div class="modal-footer">
@@ -95,17 +102,24 @@
                   <input [(ngModel)]="userGetId.username" name="username" type="email" class="form-control" id="UsernameInput">
               </div>
               <div class="mb-3">
-                  <label for="RoleInput" class="form-label">Role</label>
-                  <input [(ngModel)]="userGetId.role" name="role" type="email" class="form-control" id="RoleInput">
-              </div>
+                <label for="EmanilInput" class="form-label">Email</label>
+                <input [(ngModel)]="userGetId.email" name="password" type="email" class="form-control" id="EmanilInput">
+            </div>
               <div class="mb-3">
                   <label for="PhoneInput" class="form-label">Phone</label>
                   <input [(ngModel)]="userGetId.phone" name="phone" type="email" class="form-control" id="PhoneInput">
               </div>
-              <div class="mb-3">
-                  <label for="EmanilInput" class="form-label">Email</label>
-                  <input [(ngModel)]="userGetId.email" name="password" type="email" class="form-control" id="EmanilInput">
-              </div>
+            
+
+            <div class="mb-3">
+              <label class="form-label">Rol</label>
+              <select [(ngModel)]="userGetId.role" name="department" class="form-select" aria-label="Default select example">
+                <option disabled value="" selected>Open this select menu</option>
+                <option value="CLIENT">Cliente</option>
+                <option value="ADMIN">Administrador</option>
+              </select>
+          </div>
+
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                   <button type="submit" class="btn btn-danger" data-bs-dismiss="modal">Guardar</button>

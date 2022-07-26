@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserRestService } from 'src/app/services/userRest/user-rest.service';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +20,9 @@ export class NavbarComponent implements OnInit {
   filesToUpload:any
 
 
-  constructor(private userRest: UserRestService) {}
+  constructor(
+    private userRest: UserRestService,
+    private router: Router) {}
 
   ngOnInit(): void {
     this.token = this.userRest.getToken();
@@ -28,7 +32,28 @@ export class NavbarComponent implements OnInit {
     this.surname = this.userRest.getIdentity().surname;
   }
   logOut() {
-    localStorage.clear();
+
+
+    Swal.fire({
+      title: '¿Quieres cerrar sesión?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Cerrar sesión',
+      denyButtonText: `No`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+        localStorage.clear();
+        this.token  = ''
+        this.router.navigateByUrl('/login');
+      }
+    })
+        
+      
+
+
+
+    
   }
 
   fileChange(fileInput:any){

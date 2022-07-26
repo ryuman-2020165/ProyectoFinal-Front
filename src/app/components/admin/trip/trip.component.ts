@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TripModel } from 'src/app/models/trip.model';
 import { TripRestService } from 'src/app/services/tripRest/trip-rest.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-trip',
@@ -37,12 +38,22 @@ export class TripComponent implements OnInit {
   addTrip(addTripForm: any) {
     this.tripRest.addTrip(this.trip).subscribe({
       next: (res: any) => {
-        alert(res.message)
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.getTrips()
         addTripForm.reset();
       },
       error: (err) => {
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
       }
     })
   }
@@ -51,11 +62,21 @@ export class TripComponent implements OnInit {
     this.tripRest.updateTrip(this.tripGetId, this.tripGetId._id).subscribe({
       next: (res: any) => {
         
-
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.getTrips()
       },
       error: (err) => {
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
 
       }
     })
@@ -76,15 +97,47 @@ export class TripComponent implements OnInit {
   }
 
   deleteTrip(id: string) {
-    this.tripRest.deleteTrip(id).subscribe({
-      next: (res: any) => {
-        alert(res.message)
-        this.getTrips()
-      },
-      error: (err) => {
-        alert(err.error.message || err.error)
 
-      }
-    })
+
+
+      Swal.fire({
+        title: 'Quieres eliminar el viaje',
+        showDenyButton: true,
+        showCancelButton: false,
+        confirmButtonText: 'Eliminar',
+        denyButtonText: `No eliminar`,
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          
+          this.tripRest.deleteTrip(id).subscribe({
+            next: (res: any) => {
+              Swal.fire({
+                icon: 'success',
+                title: res.message,
+                showConfirmButton:false,
+                timer: 1300,
+              });
+              this.getTrips()
+            },
+            error: (err) => {
+              Swal.fire({
+                icon: 'warning',
+                title: err.error.message || err.error,
+                showConfirmButton:false,
+                timer: 1300,
+              });
+      
+            }})
+          
+        } else if (result.isDenied) {
+          Swal.fire('No se ha eliminado el viaje')
+        }
+      })
+      
+
+
+
+    
   }
 }

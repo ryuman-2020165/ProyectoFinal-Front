@@ -52,14 +52,14 @@
                 <div class="mb-3">
                     <label class="form-label">Viaje</label>
                     <select [(ngModel)]="destiny.trip" name="trip" class="form-select" aria-label="Default select example">
-                      <option disabled value="" selected>Open this select menu</option>
+                      <option disabled value="" selected>Seleccione un viaje</option>
                       <option *ngFor="let trip of trips" value="{{ trip._id }}">{{ trip.name }}</option>
                     </select>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Hospedaje</label>
                     <select [(ngModel)]="destiny.lodge" name="lodge" class="form-select" aria-label="Default select example">
-                      <option disabled value="" selected>Open this select menu</option>
+                      <option disabled value="" selected>Seleccione un hospedaje</option>
                       <option *ngFor="let lodge of lodges" value="{{ lodge._id }}">{{ lodge.name }}</option>
                     </select>
                 </div>
@@ -90,14 +90,14 @@
                 <div class="mb-3">
                 <label for="TripInput" class="form-label">Viaje</label>
                     <select [(ngModel)]="destinyGetId.trip" name="trip" class="form-select" aria-label="Default select example">
-                      <option disabled value="" selected>Open this select menu</option>
+                      <option disabled value="" selected>Seleccione un viaje</option>
                       <option *ngFor="let trip of trips" value="{{ trip._id }}">{{ trip.name }}</option>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label for="LodgeInput" class="form-label">Hospedaje</label>
                     <select [(ngModel)]="destinyGetId.lodge" name="lodge" class="form-select" aria-label="Default select example">
-                      <option disabled value="" selected>Open this select menu</option>
+                      <option disabled value="" selected>Seleccione un hospedaje</option>
                       <option *ngFor="let lodge of lodges" value="{{ lodge._id }}">{{ lodge.name }}</option>
                     </select>
                   </div>

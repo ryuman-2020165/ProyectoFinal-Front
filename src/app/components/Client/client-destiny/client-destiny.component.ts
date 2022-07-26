@@ -3,7 +3,7 @@ import { LodgeRestService } from 'src/app/services/lodgeRest/lodge-rest.service'
 import { DestinyRestService } from 'src/app/services/destinyRest/destiny-rest.service';
 import { TripRestService } from 'src/app/services/tripRest/trip-rest.service';
 import { DestinyModel } from 'src/app/models/destiny.model';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-client-destiny',
@@ -75,7 +75,12 @@ export class ClientDestinyComponent implements OnInit {
   addDestiny(addDestinyForm: any){
     this.destinyRest.addDestiny(this.destiny, this.destiny.trip, this.destiny.lodge).subscribe({
       next: (res:any)=>{
-        alert(res.message)
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.getLodgesClient();
         this.getTripsClient();
         this.getDestinysClients();
@@ -83,7 +88,12 @@ export class ClientDestinyComponent implements OnInit {
         addDestinyForm.reset();
       },
       error: (err)=>{
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
       }
     })
   }
@@ -91,13 +101,23 @@ export class ClientDestinyComponent implements OnInit {
   updateDestiny(){
     this.destinyRest.updateDestiny(this.destinyGetId,this.destinyGetId._id).subscribe({
       next: (res:any)=>{
-        alert(res.message)
+        Swal.fire({
+          icon: 'success',
+          title: res.message,
+          showConfirmButton:false,
+          timer: 1300,
+        });
         this.getLodgesClient();
         this.getTripsClient();
         this.getDestinysClients();
       },
       error: (err)=>{
-        alert(err.error.message || err.error)
+        Swal.fire({
+          icon: 'warning',
+          title: err.error.message || err.error,
+          showConfirmButton:false,
+          timer: 1300,
+        });
   
       }
     })
@@ -117,16 +137,46 @@ export class ClientDestinyComponent implements OnInit {
 }
 
 deleteDestiny(id:string){
-  this.destinyRest.deleteDestiny(id).subscribe({
-    next: (res:any)=>{
-      alert(res.message)
 
-      this.getDestinysClients();
-    },
-    error: (err)=>{
-      alert(err.error.message || err.error)
 
+
+  Swal.fire({
+    title: '¿Quieres eliminar el destino?',
+    showDenyButton: true,
+    showCancelButton: false,
+    confirmButtonText: 'Eliminar',
+    denyButtonText: `No eliminar`,
+  }).then((result) => {
+    /* Read more about isConfirmed, isDenied below */
+    if (result.isConfirmed) {
+      
+      this.destinyRest.deleteDestiny(id).subscribe({
+        next: (res:any)=>{
+          Swal.fire({
+            icon: 'success',
+            title: res.message,
+            showConfirmButton:false,
+            timer: 1300,
+          });
+    
+          this.getDestinysClients();
+        },
+        error: (err)=>{
+          Swal.fire({
+            icon: 'warning',
+            title: err.error.message || err.error,
+            showConfirmButton:false,
+            timer: 1300,
+          });
+    
+        }
+      })
+
+    } else if (result.isDenied) {
+      Swal.fire('No se ha eliminado el destino')
     }
   })
+
+
 }
 }

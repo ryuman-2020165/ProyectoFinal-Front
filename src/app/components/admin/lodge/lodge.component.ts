@@ -3,6 +3,7 @@ import { LodgeModel } from 'src/app/models/lodge.model';
 import { LodgeRestService } from 'src/app/services/lodgeRest/lodge-rest.service';
 import { CategoryRestService } from 'src/app/services/categoryRest/category-rest.service';
 import { DepartmentRestService } from 'src/app/services/departmentRest/department-rest.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-lodge',
@@ -66,14 +67,24 @@ import { DepartmentRestService } from 'src/app/services/departmentRest/departmen
     addLodge(addLodgeForm: any){
       this.lodgeRest.addLodge(this.lodge, this.lodge.department, this.lodge.category).subscribe({
         next: (res:any)=>{
-          alert(res.message)
+          Swal.fire({
+            icon: 'success',
+            title: res.message,
+            showConfirmButton:false,
+            timer: 1300,
+          });
           this.getLodges();
           this.getCategories();
           this.getDepartments();
           addLodgeForm.reset();
         },
         error: (err)=>{
-          alert(err.error.message || err.error)
+          Swal.fire({
+            icon: 'warning',
+            title: err.error.message || err.error,
+            showConfirmButton:false,
+            timer: 1300,
+          });
         }
       })
     }
@@ -81,13 +92,23 @@ import { DepartmentRestService } from 'src/app/services/departmentRest/departmen
     updateLodge(){
       this.lodgeRest.updateLodge(this.lodgeGetId,this.lodgeGetId._id).subscribe({
         next: (res:any)=>{
-          alert(res.message)
+          Swal.fire({
+            icon: 'success',
+            title: res.message,
+            showConfirmButton:false,
+            timer: 1300,
+          });
           this.getLodges();
           this.getCategories();
           this.getDepartments();
         },
         error: (err)=>{
-          alert(err.error.message || err.error)
+          Swal.fire({
+            icon: 'warning',
+            title: err.error.message || err.error,
+            showConfirmButton:false,
+            timer: 1300,
+          });
     
         }
       })
@@ -108,16 +129,47 @@ import { DepartmentRestService } from 'src/app/services/departmentRest/departmen
   }
   
   deleteLodge(id:string){
-    this.lodgeRest.deleteLodge(id).subscribe({
-      next: (res:any)=>{
-        alert(res.message)
-        this.getLodges()
-      },
-      error: (err)=>{
-        alert(err.error.message || err.error)
-  
+    
+    Swal.fire({
+      title: '¿Quieres eliminar el hospedaje?',
+      showDenyButton: true,
+      showCancelButton: false,
+      confirmButtonText: 'Eliminar',
+      denyButtonText: `No eliminar`,
+    }).then((result) => {
+      /* Read more about isConfirmed, isDenied below */
+      if (result.isConfirmed) {
+
+        this.lodgeRest.deleteLodge(id).subscribe({
+          next: (res:any)=>{
+            Swal.fire({
+              icon: 'success',
+              title: res.message,
+              showConfirmButton:false,
+              timer: 1300,
+            });
+            this.getLodges()
+          },
+          error: (err)=>{
+            Swal.fire({
+              icon: 'warning',
+              title: err.error.message || err.error,
+              showConfirmButton:false,
+              timer: 1300,
+            });
+      
+          }
+        })
+    
+        
+      } else if (result.isDenied) {
+        Swal.fire('No se ha eliminado el hospedaje')
       }
     })
+
+
+
+
   }
 
 }
