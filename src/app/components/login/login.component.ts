@@ -26,15 +26,16 @@ export class LoginComponent implements OnInit {
   login(){
     this.userRest.login(this.user).subscribe({
       next: (res: any)=>{
-        localStorage.setItem('token', res.token);
-        localStorage.setItem('identity', JSON.stringify(res.already));
-
         Swal.fire({
           icon: 'success',
           title: res.message,
           showConfirmButton:false,
           timer: 1300,
         });
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('identity', JSON.stringify(res.already));
+
+        
         this.router.navigateByUrl('/home');
       },
       error: (err: any)=>{

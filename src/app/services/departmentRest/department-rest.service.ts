@@ -18,26 +18,26 @@ export class DepartmentRestService {
   ) { }
 
   testDepartments(){
-    return this.http.get(environment.baseUrl +'department/test', {headers:this.httpOptions});
+    return this.http.get(environment.baseUrl +'department/test', {headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},});
   }
 
   
   saveDepartment(params:{}){
-    return this.http.post(environment.baseUrl+'department/saveDepartment', params,{headers: this.httpOptions})
+    return this.http.post(environment.baseUrl+'department/saveDepartment', params,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   getDepartments(){
-    return this.http.get(environment.baseUrl+'department/getDepartments',{headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'department/getDepartments',{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   getDepartment(id:string){
-    return this.http.get(environment.baseUrl+'department/getDepartment/'+id,{headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'department/getDepartment/'+id,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
 
 
   updateDepartment(params:{}, id:string){
-    return this.http.put(environment.baseUrl+'department/updateDepartment/'+id,params,{headers: this.httpOptions})
+    return this.http.put(environment.baseUrl+'department/updateDepartment/'+id,params,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
 
   deleteDepartment(id:string){
-    return this.http.delete(environment.baseUrl+'department/deleteDepartment/'+id,{headers: this.httpOptions})
+    return this.http.delete(environment.baseUrl+'department/deleteDepartment/'+id,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
 }

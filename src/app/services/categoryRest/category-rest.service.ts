@@ -21,22 +21,22 @@ export class CategoryRestService {
   //Funciones para administrador
 
   testCategories(){
-    return this.http.get(environment.baseUrl+'category/test', {headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'category/test', {headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   addCategory(params:{}){
-    return this.http.post(environment.baseUrl+'category/addCategory', params,{headers: this.httpOptions})
+    return this.http.post(environment.baseUrl+'category/addCategory', params,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   getCategories(){
-    return this.http.get(environment.baseUrl+'category/getCategorys',{headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'category/getCategorys',{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   getCategory(id:string){
-    return this.http.get(environment.baseUrl+'category/getCategory/'+id,{headers: this.httpOptions})
+    return this.http.get(environment.baseUrl+'category/getCategory/'+id,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   updateCategory(params:{}, id:string){
-    return this.http.put(environment.baseUrl+'category/updateCategory/'+id,params,{headers: this.httpOptions})
+    return this.http.put(environment.baseUrl+'category/updateCategory/'+id,params,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
   deleteCategory(id:string){
-    return this.http.delete(environment.baseUrl+'category/deleteCategory/'+id,{headers: this.httpOptions})
+    return this.http.delete(environment.baseUrl+'category/deleteCategory/'+id,{headers: {'Content-Type': 'application/json',Authorization: this.userRest.getToken(),},})
   }
 
 

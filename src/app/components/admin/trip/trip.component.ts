@@ -38,6 +38,7 @@ export class TripComponent implements OnInit {
   addTrip(addTripForm: any) {
     this.tripRest.addTrip(this.trip).subscribe({
       next: (res: any) => {
+        
         Swal.fire({
           icon: 'success',
           title: res.message,
