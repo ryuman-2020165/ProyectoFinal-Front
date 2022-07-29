@@ -53,8 +53,10 @@
                     <label class="form-label">Viaje</label>
                     <select [(ngModel)]="destiny.trip" name="trip" class="form-select" aria-label="Default select example">
                       <option disabled value="" selected>Seleccione un viaje</option>
-                      <option *ngFor="let trip of trips" value="{{ trip._id }}">{{ trip.name }}</option>
+                      <option *ngFor="let trip of trips" value="{{ trip._id }}">{{ trip.name }} | {{ trip.endDate }}</option>
+                      
                     </select>
+                    
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Hospedaje</label>

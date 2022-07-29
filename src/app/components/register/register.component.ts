@@ -32,10 +32,8 @@ export class RegisterComponent implements OnInit {
     clearTimeout(this.timer);
     this.timer = await setTimeout(()=>{
       if(this.repeatPassword != this.user.password){
-        alert('Password doesnt match');
         clearTimeout(this.timer);
       }else{
-        alert('Password match');
         clearTimeout(this.timer);
       }
     }, 1500)

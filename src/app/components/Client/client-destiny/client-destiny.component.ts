@@ -49,7 +49,6 @@ export class ClientDestinyComponent implements OnInit {
   getTripsClient() {
     this.tripRest.getTripsClient().subscribe({
       next: (res: any) => {
-        
         this.trips = res.findTrips;
       },
       error: (err) => {
@@ -88,6 +87,8 @@ export class ClientDestinyComponent implements OnInit {
         addDestinyForm.reset();
       },
       error: (err)=>{
+        console.log(err);
+        
         Swal.fire({
           icon: 'warning',
           title: err.error.message || err.error,
